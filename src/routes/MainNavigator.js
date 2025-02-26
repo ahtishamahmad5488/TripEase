@@ -2,6 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
 import {SCREENS} from '../constants/screens';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
@@ -32,7 +33,22 @@ const MainNavigator = () => {
         />
         <Stack.Screen
           name="HomeScreen"
-          component={SCREENS.HomeScreen}
+          component={TabNavigator}
+          options={{animation: 'slide_from_bottom'}}
+        />
+        <Stack.Screen
+          name="DetailScreen"
+          component={SCREENS.DetailScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
+        <Stack.Screen
+          name="CreateBookingScreen"
+          component={SCREENS.CreateBookingScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
+        <Stack.Screen
+          name="PaymentScreen"
+          component={SCREENS.PaymentScreen}
           options={{animation: 'slide_from_bottom'}}
         />
       </Stack.Navigator>
