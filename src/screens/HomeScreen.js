@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  TextInput,
   StyleSheet,
   Image,
   TouchableOpacity,
@@ -14,7 +13,6 @@ import {
   Keyboard,
 } from 'react-native';
 import {ICONS} from '../constants/icons';
-import CustomButton from '../components/CustomButton';
 import CustomTextInput from '../components/CustomTextField';
 import {COLORS} from '../constants/colors';
 

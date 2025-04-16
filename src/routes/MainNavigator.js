@@ -51,6 +51,11 @@ const MainNavigator = () => {
           component={SCREENS.PaymentScreen}
           options={{animation: 'slide_from_bottom'}}
         />
+        <Stack.Screen
+          name="AdminScreen"
+          component={SCREENS.AdminScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

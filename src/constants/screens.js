@@ -9,6 +9,7 @@ import MapScreen from '../screens/MapScreen';
 import DetailScreen from '../screens/DetailScreen';
 import CreateBookingScreen from '../screens/CreateBookingScreen';
 import PaymentScreen from '../screens/PaymentScreen';
+import AdminScreen from '../screens/AdminScreen';
 
 export const SCREENS = {
   LoginScreen: LoginScreen,
@@ -22,4 +23,5 @@ export const SCREENS = {
   DetailScreen: DetailScreen,
   CreateBookingScreen: CreateBookingScreen,
   PaymentScreen: PaymentScreen,
+  AdminScreen: AdminScreen,
 };

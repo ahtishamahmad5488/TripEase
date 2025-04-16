@@ -4,8 +4,8 @@ import {COLORS} from '../constants/colors';
 import * as Animatable from 'react-native-animatable';
 import CustomButton from '../components/CustomButton';
 const DetailScreen = ({route, navigation}) => {
-  const tour = route.params?.tour || {}; // 👈 Avoids undefined error
-  console.log(tour); // Debugging
+  const tour = route.params?.tour || {};
+
   const AnimatedBtn = Animatable.createAnimatableComponent(TouchableOpacity);
   return (
     <View style={styles.container}>

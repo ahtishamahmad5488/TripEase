@@ -1,22 +1,29 @@
-import {StyleSheet, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {deviceHeight, deviceWidth} from '../components/Dimensions';
+import {ImageBackground, StyleSheet, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import * as Animatable from 'react-native-animatable';
+import {ICONS} from '../constants/icons';
 
 const Splash = ({navigation}) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       navigation.navigate('LoginScreen');
-    }, 2000);
-  });
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Animatable.Image
-        animation="zoomInUp"
-        style={styles.logo}
-        source={require('../assets/icons/splashScreen.png')}
-      />
-    </View>
+    <ImageBackground
+      source={require('../assets/icons/backgroundImage.jpg')}
+      style={styles.container}
+      onLoad={() => setIsImageLoaded(true)}>
+      {isImageLoaded && (
+        <Animatable.View animation="slideInUp" duration={3000}>
+          <ICONS.splashTitle />
+        </Animatable.View>
+      )}
+    </ImageBackground>
   );
 };
 
@@ -27,9 +34,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  logo: {
-    width: deviceWidth,
-    height: deviceHeight,
   },
 });

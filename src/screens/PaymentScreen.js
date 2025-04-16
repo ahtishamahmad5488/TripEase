@@ -18,7 +18,7 @@ import {COLORS} from '../constants/colors';
 import CustomTextInput from '../components/CustomTextField';
 import CustomButton from '../components/CustomButton';
 
-const PaymentScreen = () => {
+const PaymentScreen = ({navigation}) => {
   const [selectedMethod, setSelectedMethod] = useState(null);
 
   return (
@@ -91,7 +91,10 @@ const PaymentScreen = () => {
                 marginTop: 20,
                 paddingHorizontal: 20,
               }}>
-              <CustomButton title="Confirm Payment" />
+              <CustomButton
+                title="Confirm Payment"
+                onPress={() => navigation.push('AdminScreen')}
+              />
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
