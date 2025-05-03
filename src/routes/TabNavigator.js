@@ -31,6 +31,11 @@ const CreateStack = () => (
       component={SCREENS.AdminScreen}
       options={{animation: 'slide_from_bottom'}}
     />
+    <Stack.Screen
+      name="TransporterScreen"
+      component={SCREENS.TransporterScreen}
+      options={{animation: 'slide_from_bottom'}}
+    />
   </Stack.Navigator>
 );
 

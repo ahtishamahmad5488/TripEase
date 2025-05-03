@@ -9,10 +9,10 @@ import {
   Keyboard,
   StatusBar,
 } from 'react-native';
-import CustomTextInput from '../components/CustomTextField';
 import CustomButton from '../components/CustomButton';
 import {COLORS} from '../constants/colors';
 import {ICONS} from '../constants/icons';
+import CustomTextInput from '../components/CustomTextField';
 
 const CreateBookingScreen = ({navigation}) => {
   const [driverName, setDriverName] = useState('');

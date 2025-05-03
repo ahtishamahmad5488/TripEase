@@ -10,10 +10,11 @@ import {
   Keyboard,
   StatusBar,
 } from 'react-native';
-import CustomTextInput from '../components/CustomTextField';
-import CustomButton from '../components/CustomButton';
-import {deviceHeight, deviceWidth} from '../components/Dimensions';
-import {COLORS} from '../constants/colors';
+import CustomButton from '../../components/CustomButton';
+
+import {COLORS} from '../../constants/colors';
+import {deviceHeight, deviceWidth} from '../../components/Dimensions';
+import CustomTextInput from '../../components/CustomTextField';
 
 const RegistrationScreen = ({navigation}) => {
   const [driverName, setDriverName] = useState('');
@@ -25,7 +26,7 @@ const RegistrationScreen = ({navigation}) => {
 
   return (
     <ImageBackground
-      source={require('../assets/icons/backgroundImage.jpg')}
+      source={require('../../assets/icons/backgroundImage.jpg')}
       style={styles.background}>
       <View style={styles.overlay} />
       <StatusBar barStyle="light-content" />

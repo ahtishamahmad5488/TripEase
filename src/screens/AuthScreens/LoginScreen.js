@@ -11,50 +11,41 @@ import {
   Keyboard,
   StatusBar,
 } from 'react-native';
-import CustomTextInput from '../components/CustomTextField';
-import CustomButton from '../components/CustomButton';
-import {ICONS} from '../constants/icons';
-import {COLORS} from '../constants/colors';
 
-const SignUpScreen = ({navigation}) => {
+import CustomButton from '../../components/CustomButton';
+import CustomTextInput from '../../components/CustomTextField';
+import { COLORS } from '../../constants/colors';
+import { ICONS } from '../../constants/icons';
+
+const LoginScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
     <ImageBackground
-      source={require('../assets/icons/backgroundImage.jpg')}
+      source={require('../../assets/icons/backgroundImage.jpg')}
+      e
       style={styles.background}>
       <View style={styles.overlay} />
       <StatusBar barStyle="light-content" />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
           <ScrollView contentContainerStyle={styles.scrollContainer}>
-            <Text style={styles.title}>SignUp</Text>
+            <Text style={styles.title}>Login</Text>
+
             <View style={styles.formContainer}>
-              <View style={styles.inputContainer}>
-                <Text style={styles.labelText}>User name</Text>
-                <CustomTextInput
-                  style={styles.TextInputField}
-                  value={userName}
-                  onChangeText={setUserName}
-                  placeholder="User name"
-                  placeholderTextColor={COLORS.primaryLightGrayHex}
-                />
-              </View>
               <View style={styles.inputContainer}>
                 <Text style={styles.labelText}>Email</Text>
                 <CustomTextInput
                   style={styles.TextInputField}
-                  value={email}
-                  onChangeText={setEmail}
                   placeholder="Email"
                   placeholderTextColor={COLORS.primaryLightGrayHex}
+                  value={email}
+                  onChangeText={setEmail}
                 />
               </View>
+
               <View style={styles.inputContainer}>
                 <Text style={styles.labelText}>Password</Text>
                 <View style={styles.passwordContainer}>
@@ -77,43 +68,25 @@ const SignUpScreen = ({navigation}) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              <View style={styles.inputContainer}>
-                <Text style={styles.labelText}>Confirm Password</Text>
-                <View style={styles.passwordContainer}>
-                  <CustomTextInput
-                    placeholder="Confirm Password"
-                    placeholderTextColor={COLORS.primaryLightGrayHex}
-                    style={styles.TextInputField}
-                    secureTextEntry={!confirmPasswordVisible}
-                    value={confirmPassword}
-                    onChangeText={setConfirmPassword}
-                  />
-                  <TouchableOpacity
-                    style={{position: 'absolute', right: 10}}
-                    onPress={() =>
-                      setConfirmPasswordVisible(!confirmPasswordVisible)
-                    }>
-                    {confirmPasswordVisible ? (
-                      <ICONS.visibilityIcon />
-                    ) : (
-                      <ICONS.visibilityIcon />
-                    )}
-                  </TouchableOpacity>
-                </View>
-              </View>
             </View>
 
+            <View style={styles.forgotPassword}>
+              <TouchableOpacity onPress={() => navigation.push("ForgotPasswordScreen")}>
+                <Text style={styles.forgotText}>Forgot password?</Text>
+              </TouchableOpacity>
+            </View>
             <View style={styles.loginButtonContainer}>
-              <CustomButton title="SignUp" />
+              <CustomButton
+                title="Login"
+                onPress={() => navigation.push('RegistrationScreen')}
+              />
             </View>
 
             <View style={styles.signupContainer}>
-              <Text style={styles.signupText}>
-                Already have an account! {''}
-              </Text>
+              <Text style={styles.signupText}>Don't have an account?</Text>
               <TouchableOpacity
-                onPress={() => navigation.navigate('LoginScreen')}>
-                <Text style={styles.signupLink}>Login</Text>
+                onPress={() => navigation.navigate('SignUpScreen')}>
+                <Text style={styles.signupLink}> Signup</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -149,7 +122,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   formContainer: {
-    marginBottom: 10,
+    marginTop: 30,
   },
   inputContainer: {
     marginTop: 12,
@@ -158,7 +131,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: COLORS.primaryWhiteHex,
     marginBottom: 5,
-    fontWeight: '700',
+    fontWeight: 'bold',
   },
   TextInputField: {
     backgroundColor: COLORS.primaryWhiteHexRGBA,
@@ -170,6 +143,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  forgotPassword: {
+    alignSelf: 'flex-end',
+    marginTop: 10,
+  },
+  forgotText: {
+    color: COLORS.primaryWhiteHex,
+    fontSize: 14,
   },
   loginButtonContainer: {
     marginTop: 30,
@@ -192,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default LoginScreen;

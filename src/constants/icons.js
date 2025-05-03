@@ -3,6 +3,7 @@ import titleIcon from '../assets/icons/titleIcon.svg';
 import logoIcon from '../assets/icons/logoIcon.svg';
 import searchIcon from '../assets/icons/searchIcon.svg';
 import splashTitle from '../assets/icons/splashTitle.svg';
+import arrowIcon from '../assets/icons/arrowIcon.svg'
 
 export const ICONS = {
   visibilityIcon: visibilityIcon,
@@ -10,4 +11,5 @@ export const ICONS = {
   logoIcon: logoIcon,
   searchIcon: searchIcon,
   splashTitle: splashTitle,
+  arrowIcon:arrowIcon,
 };

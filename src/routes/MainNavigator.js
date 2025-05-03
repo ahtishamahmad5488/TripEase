@@ -27,6 +27,21 @@ const MainNavigator = () => {
           options={{animation: 'slide_from_bottom'}}
         />
         <Stack.Screen
+          name="ForgotPasswordScreen"
+          component={SCREENS.ForgotPasswordScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
+        <Stack.Screen
+          name="OTPScreen"
+          component={SCREENS.OTPScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
+        <Stack.Screen
+          name="NewPasswordScreen"
+          component={SCREENS.NewPasswordScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
+        <Stack.Screen
           name="RegistrationScreen"
           component={SCREENS.RegistrationScreen}
           options={{animation: 'slide_from_bottom'}}
@@ -54,6 +69,11 @@ const MainNavigator = () => {
         <Stack.Screen
           name="AdminScreen"
           component={SCREENS.AdminScreen}
+          options={{animation: 'slide_from_bottom'}}
+        />
+        <Stack.Screen
+          name="TransporterScreen"
+          component={SCREENS.TransporterScreen}
           options={{animation: 'slide_from_bottom'}}
         />
       </Stack.Navigator>
