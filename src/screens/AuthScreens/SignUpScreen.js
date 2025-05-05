@@ -13,8 +13,9 @@ import {
 } from 'react-native';
 import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextField';
-import { ICONS } from '../../constants/icons';
-import { COLORS } from '../../constants/colors';
+import {ICONS} from '../../constants/icons';
+import {COLORS} from '../../constants/colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -23,6 +24,43 @@ const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState(''); // 'Customer' or 'Transporter'
+
+  const handleSignUp = async () => {
+    // Basic validation
+    if (!userName || !email || !password || !confirmPassword || !role) {
+      alert('Please fill all fields');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    if (role !== 'Customer' && role !== 'Transporter') {
+      alert('Please select either Customer or Transporter as your role');
+      return;
+    }
+
+    try {
+      // Save user data to AsyncStorage
+      const userData = {
+        userName,
+        email,
+        password,
+        role,
+      };
+
+      await AsyncStorage.setItem('userData', JSON.stringify(userData));
+
+      // Navigate to Login screen
+      navigation.navigate('LoginScreen');
+    } catch (error) {
+      console.error('Error saving user data:', error);
+      alert('An error occurred during signup');
+    }
+  };
 
   return (
     <ImageBackground
@@ -101,10 +139,33 @@ const SignUpScreen = ({navigation}) => {
                   </TouchableOpacity>
                 </View>
               </View>
+
+              {/* Role Selection Field */}
+              <View style={styles.inputContainer}>
+                <Text style={styles.labelText}>Select Role</Text>
+                <View style={styles.roleContainer}>
+                  <TouchableOpacity
+                    style={[
+                      styles.roleButton,
+                      role === 'Customer' && styles.roleButtonSelected,
+                    ]}
+                    onPress={() => setRole('Customer')}>
+                    <Text style={styles.roleText}>Customer</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[
+                      styles.roleButton,
+                      role === 'Transporter' && styles.roleButtonSelected,
+                    ]}
+                    onPress={() => setRole('Transporter')}>
+                    <Text style={styles.roleText}>Transporter</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
 
             <View style={styles.loginButtonContainer}>
-              <CustomButton title="SignUp" />
+              <CustomButton title="SignUp" onPress={handleSignUp} />
             </View>
 
             <View style={styles.signupContainer}>
@@ -173,6 +234,26 @@ const styles = StyleSheet.create({
   },
   loginButtonContainer: {
     marginTop: 30,
+  },
+  roleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
+  },
+  roleButton: {
+    flex: 1,
+    padding: 12,
+    backgroundColor: COLORS.primaryWhiteHexRGBA,
+    borderRadius: 8,
+    marginHorizontal: 4,
+    alignItems: 'center',
+  },
+  roleButtonSelected: {
+    backgroundColor: COLORS.primaryLightGreenHex,
+  },
+  roleText: {
+    color: COLORS.primaryWhiteHex,
+    fontWeight: 'bold',
   },
   signupContainer: {
     flexDirection: 'row',

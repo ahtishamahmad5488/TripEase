@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 16,
     color: '#2D3E50',
-    fontWeight:"500",
+    fontWeight: '500',
   },
   vehicleInfo: {
     marginTop: 30,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   vehicleText: {
     fontSize: 16,
-    fontWeight:"400",
+    fontWeight: '400',
     marginBottom: 4,
     color: '#2D3E50',
   },

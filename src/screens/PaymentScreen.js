@@ -93,7 +93,7 @@ const PaymentScreen = ({navigation}) => {
               }}>
               <CustomButton
                 title="Confirm Payment"
-                onPress={() => navigation.push('TransporterScreen')}
+                onPress={() => navigation.push('AdminScreen')}
               />
             </View>
           </ScrollView>

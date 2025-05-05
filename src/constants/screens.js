@@ -14,6 +14,8 @@ import SignUpScreen from '../screens/AuthScreens/SignUpScreen';
 import ForgotPasswordScreen from '../screens/AuthScreens/ForgotPasswordScreen';
 import NewPasswordScreen from '../screens/AuthScreens/NewPasswordScreen';
 import OTPScreen from '../screens/AuthScreens/OTPScreen';
+import { CustomerStackScreens, TransporterStackScreen } from '../routes/MainNavigator';
+
 
 export const SCREENS = {
   NewPasswordScreen:NewPasswordScreen,
@@ -32,4 +34,6 @@ export const SCREENS = {
   CreateBookingScreen: CreateBookingScreen,
   PaymentScreen: PaymentScreen,
   AdminScreen: AdminScreen,
+  CustomerStackScreens:CustomerStackScreens,
+  TransporterStackScreen:TransporterScreen
 };
