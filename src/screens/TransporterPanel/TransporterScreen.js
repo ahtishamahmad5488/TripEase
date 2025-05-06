@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {ICONS} from '../../constants/icons';
 
-const TransporterScreen = () => {
+const TransporterScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
@@ -33,19 +33,19 @@ const TransporterScreen = () => {
 
       <View style={{marginTop: 30}}>
         {/* Vehicle Registration */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={()=> navigation.navigate("RegistrationScreen")}>
           <Text style={styles.cardText}>Vehicle Registration</Text>
           <ICONS.arrowIcon width={30} height={30} />
         </TouchableOpacity>
 
         {/* View Available Biddings */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={()=> navigation.navigate("ViewAvailableBiddingScreen")}>
           <Text style={styles.cardText}>View Available Biddings</Text>
           <ICONS.arrowIcon width={30} height={30} />
         </TouchableOpacity>
 
         {/* Accepted Biddings */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={()=> navigation.navigate("AcceptedBiddingScreen")}>
           <Text style={styles.cardText}>Accepted Biddings</Text>
           <ICONS.arrowIcon width={30} height={30} />
         </TouchableOpacity>

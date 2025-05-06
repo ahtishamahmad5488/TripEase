@@ -16,42 +16,41 @@ import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextField';
 import {COLORS} from '../../constants/colors';
 import {ICONS} from '../../constants/icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
-    try {
-      // Retrieve user data from AsyncStorage
-      const userDataString = await AsyncStorage.getItem('userData');
-      if (!userDataString) {
-        alert('No user found. Please sign up first.');
-        return;
-      }
-      const userData = JSON.parse(userDataString);
+  // const handleLogin = async () => {
+  //   try {
+  //     // Retrieve user data from AsyncStorage
+  //     const userDataString = await AsyncStorage.getItem('userData');
+  //     if (!userDataString) {
+  //       alert('No user found. Please sign up first.');
+  //       return;
+  //     }
+  //     const userData = JSON.parse(userDataString);
 
-      // Basic validation
-      if (email !== userData.email || password !== userData.password) {
-        alert('Invalid email or password');
-        return;
-      }
+  //     // Basic validation
+  //     if (email !== userData.email || password !== userData.password) {
+  //       alert('Invalid email or password');
+  //       return;
+  //     }
 
-      // Navigate based on role
-      if (userData.role === 'Customer') {
-        navigation.navigate('HomeScreen'); // Replace with your customer screen
-      } else if (userData.role === 'Transporter') {
-        navigation.navigate('TransporterScreen'); // Replace with your transporter screen
-      } else {
-        alert('Invalid user role');
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-      alert('An error occurred during login');
-    }
-  };
+  //     // Navigate based on role
+  //     if (userData.role === 'Customer') {
+  //       navigation.navigate('HomeScreen'); // Replace with your customer screen
+  //     } else if (userData.role === 'Transporter') {
+  //       navigation.navigate('TransporterScreen'); // Replace with your transporter screen
+  //     } else {
+  //       alert('Invalid user role');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error during login:', error);
+  //     alert('An error occurred during login');
+  //   }
+  // };
 
   return (
     <ImageBackground
@@ -108,7 +107,7 @@ const LoginScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <View style={styles.loginButtonContainer}>
-              <CustomButton title="Login" onPress={handleLogin} />
+              <CustomButton title="Login" onPress={()=> navigation.navigate("TransporterScreen")} />
             </View>
 
             <View style={styles.signupContainer}>

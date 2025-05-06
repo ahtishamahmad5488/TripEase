@@ -19,48 +19,49 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
+  const [CNIC, setCNIC] = useState('');
+  const [address,setAddress] = useState('');
   const [role, setRole] = useState(''); // 'Customer' or 'Transporter'
 
-  const handleSignUp = async () => {
-    // Basic validation
-    if (!userName || !email || !password || !confirmPassword || !role) {
-      alert('Please fill all fields');
-      return;
-    }
+  // const handleSignUp = async () => {
+  //   // Basic validation
+  //   if (!userName || !email || !password || !confirmPassword || !role) {
+  //     alert('Please fill all fields');
+  //     return;
+  //   }
 
-    if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return;
-    }
+  //   if (password !== confirmPassword) {
+  //     alert('Passwords do not match');
+  //     return;
+  //   }
 
-    if (role !== 'Customer' && role !== 'Transporter') {
-      alert('Please select either Customer or Transporter as your role');
-      return;
-    }
+  //   if (role !== 'Customer' && role !== 'Transporter') {
+  //     alert('Please select either Customer or Transporter as your role');
+  //     return;
+  //   }
 
-    try {
-      // Save user data to AsyncStorage
-      const userData = {
-        userName,
-        email,
-        password,
-        role,
-      };
+  //   try {
+  //     // Save user data to AsyncStorage
+  //     const userData = {
+  //       userName,
+  //       email,
+  //       password,
+  //       role,
+  //     };
 
-      await AsyncStorage.setItem('userData', JSON.stringify(userData));
+  //     await AsyncStorage.setItem('userData', JSON.stringify(userData));
 
-      // Navigate to Login screen
-      navigation.navigate('LoginScreen');
-    } catch (error) {
-      console.error('Error saving user data:', error);
-      alert('An error occurred during signup');
-    }
-  };
+  //     // Navigate to Login screen
+  //     navigation.navigate('LoginScreen');
+  //   } catch (error) {
+  //     console.error('Error saving user data:', error);
+  //     alert('An error occurred during signup');
+  //   }
+  // };
 
   return (
     <ImageBackground
@@ -70,7 +71,7 @@ const SignUpScreen = ({navigation}) => {
       <StatusBar barStyle="light-content" />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
             <Text style={styles.title}>SignUp</Text>
             <View style={styles.formContainer}>
               <View style={styles.inputContainer}>
@@ -116,30 +117,35 @@ const SignUpScreen = ({navigation}) => {
                 </View>
               </View>
               <View style={styles.inputContainer}>
-                <Text style={styles.labelText}>Confirm Password</Text>
-                <View style={styles.passwordContainer}>
-                  <CustomTextInput
-                    placeholder="Confirm Password"
-                    placeholderTextColor={COLORS.primaryLightGrayHex}
-                    style={styles.TextInputField}
-                    secureTextEntry={!confirmPasswordVisible}
-                    value={confirmPassword}
-                    onChangeText={setConfirmPassword}
-                  />
-                  <TouchableOpacity
-                    style={{position: 'absolute', right: 10}}
-                    onPress={() =>
-                      setConfirmPasswordVisible(!confirmPasswordVisible)
-                    }>
-                    {confirmPasswordVisible ? (
-                      <ICONS.visibilityIcon />
-                    ) : (
-                      <ICONS.visibilityIcon />
-                    )}
-                  </TouchableOpacity>
-                </View>
+                <Text style={styles.labelText}>Contact Number</Text>
+                <CustomTextInput
+                  style={styles.TextInputField}
+                  value={contactNumber}
+                  onChangeText={setContactNumber}
+                  placeholder="Contact Number"
+                  placeholderTextColor={COLORS.primaryLightGrayHex}
+                />
               </View>
-
+              <View style={styles.inputContainer}>
+                <Text style={styles.labelText}>CNIC</Text>
+                <CustomTextInput
+                  style={styles.TextInputField}
+                  value={CNIC}
+                  onChangeText={setCNIC}
+                  placeholder="CNIC"
+                  placeholderTextColor={COLORS.primaryLightGrayHex}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.labelText}>Address</Text>
+                <CustomTextInput
+                  style={styles.TextInputField}
+                  value={address}
+                  onChangeText={setAddress}
+                  placeholder="Address"
+                  placeholderTextColor={COLORS.primaryLightGrayHex}
+                />
+              </View>
               {/* Role Selection Field */}
               <View style={styles.inputContainer}>
                 <Text style={styles.labelText}>Select Role</Text>
@@ -165,7 +171,7 @@ const SignUpScreen = ({navigation}) => {
             </View>
 
             <View style={styles.loginButtonContainer}>
-              <CustomButton title="SignUp" onPress={handleSignUp} />
+              <CustomButton title="SignUp" onPress={()=>navigation.navigate("LoginScreen")} />
             </View>
 
             <View style={styles.signupContainer}>
