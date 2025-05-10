@@ -16,41 +16,20 @@ import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextField';
 import {COLORS} from '../../constants/colors';
 import {ICONS} from '../../constants/icons';
+import {useAuth} from '../../context/AuthContext';
 
 const LoginScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {role, login} = useAuth();
 
-  // const handleLogin = async () => {
-  //   try {
-  //     // Retrieve user data from AsyncStorage
-  //     const userDataString = await AsyncStorage.getItem('userData');
-  //     if (!userDataString) {
-  //       alert('No user found. Please sign up first.');
-  //       return;
-  //     }
-  //     const userData = JSON.parse(userDataString);
-
-  //     // Basic validation
-  //     if (email !== userData.email || password !== userData.password) {
-  //       alert('Invalid email or password');
-  //       return;
-  //     }
-
-  //     // Navigate based on role
-  //     if (userData.role === 'Customer') {
-  //       navigation.navigate('HomeScreen'); // Replace with your customer screen
-  //     } else if (userData.role === 'Transporter') {
-  //       navigation.navigate('TransporterScreen'); // Replace with your transporter screen
-  //     } else {
-  //       alert('Invalid user role');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error during login:', error);
-  //     alert('An error occurred during login');
-  //   }
-  // };
+  const handleLogin = () => {
+    login(role); // Optionally set logged in
+    if (role === 'customer') navigation.replace('CustomerStack');
+    else if (role === 'transporter') navigation.replace('TransporterStack');
+    else navigation.replace('AdminStack');
+  };
 
   return (
     <ImageBackground
@@ -107,7 +86,10 @@ const LoginScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <View style={styles.loginButtonContainer}>
-              <CustomButton title="Login" onPress={()=> navigation.navigate("TransporterScreen")} />
+              <CustomButton
+                title="Login"
+                onPress={()=> navigation.navigate("AdminDashboardScreen")}
+              />
             </View>
 
             <View style={styles.signupContainer}>

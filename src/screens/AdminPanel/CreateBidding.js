@@ -11,19 +11,16 @@ import {ICONS} from '../../constants/icons';
 import CustomTextInput from '../../components/CustomTextField';
 import {COLORS} from '../../constants/colors';
 
-const CreatePlanScreen = ({navigation}) => {
+const CreateBidding = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [location, setLocation] = useState('');
-  const [vehicleType, setVehicleType] = useState('');
-  const [capacity, setCapacity] = useState('');
+  const [time, setTime] = useState('');
   const [description, setDescription] = useState('');
 
   return (
     <ScrollView style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
-
       {/* Header */}
       <View style={{paddingTop: 20}}>
         <ICONS.titleIcon />
@@ -64,33 +61,13 @@ const CreatePlanScreen = ({navigation}) => {
           />
         </View>
         <View>
-          <Text style={styles.labelText}>Location</Text>
+          <Text style={styles.labelText}>Time</Text>
           <CustomTextInput
             style={styles.TextInputField}
-            placeholder="Location"
+            placeholder="Time"
             placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={location}
-            onChangeText={setLocation}
-          />
-        </View>
-        <View>
-          <Text style={styles.labelText}>Vehicle Type</Text>
-          <CustomTextInput
-            style={styles.TextInputField}
-            placeholder="Vehicle Type"
-            placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={vehicleType}
-            onChangeText={setVehicleType}
-          />
-        </View>
-        <View>
-          <Text style={styles.labelText}>Capacity</Text>
-          <CustomTextInput
-            style={styles.TextInputField}
-            placeholder="Capacity (e.g. 18 persons)"
-            placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={capacity}
-            onChangeText={setCapacity}
+            value={time}
+            onChangeText={setTime}
           />
         </View>
         <View>
@@ -148,4 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreatePlanScreen;
+export default CreateBidding;

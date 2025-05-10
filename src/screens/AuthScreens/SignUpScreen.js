@@ -15,7 +15,7 @@ import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextField';
 import {ICONS} from '../../constants/icons';
 import {COLORS} from '../../constants/colors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuth } from '../../context/AuthContext';
 
 const SignUpScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -24,44 +24,24 @@ const SignUpScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [CNIC, setCNIC] = useState('');
-  const [address,setAddress] = useState('');
-  const [role, setRole] = useState(''); // 'Customer' or 'Transporter'
+  const [address,setAddress] = useState(''); 
+  const { setRole } = useAuth();
+  const [selectedRole, setSelectedRole] = useState('');   // 'Customer' or 'Transporter'
 
-  // const handleSignUp = async () => {
-  //   // Basic validation
-  //   if (!userName || !email || !password || !confirmPassword || !role) {
-  //     alert('Please fill all fields');
-  //     return;
-  //   }
-
-  //   if (password !== confirmPassword) {
-  //     alert('Passwords do not match');
-  //     return;
-  //   }
-
-  //   if (role !== 'Customer' && role !== 'Transporter') {
-  //     alert('Please select either Customer or Transporter as your role');
-  //     return;
-  //   }
-
-  //   try {
-  //     // Save user data to AsyncStorage
-  //     const userData = {
-  //       userName,
-  //       email,
-  //       password,
-  //       role,
-  //     };
-
-  //     await AsyncStorage.setItem('userData', JSON.stringify(userData));
-
-  //     // Navigate to Login screen
-  //     navigation.navigate('LoginScreen');
-  //   } catch (error) {
-  //     console.error('Error saving user data:', error);
-  //     alert('An error occurred during signup');
-  //   }
+  // const handleSignup = () => {
+  //   setRole(selectedRole); // Save role in context
+  //   navigation.navigate('LoginScreen'); // Move to login screen
   // };
+
+  const handleSignup = () => {
+    if (!selectedRole) {
+      alert('Please select a role');
+      return;
+    }
+    setRole(selectedRole);
+    console.log('Selected role:', selectedRole);
+    navigation.navigate('LoginScreen');
+  };
 
   return (
     <ImageBackground
@@ -153,25 +133,25 @@ const SignUpScreen = ({navigation}) => {
                   <TouchableOpacity
                     style={[
                       styles.roleButton,
-                      role === 'Customer' && styles.roleButtonSelected,
+                      selectedRole === 'Customer' && styles.roleButtonSelected,
                     ]}
-                    onPress={() => setRole('Customer')}>
-                    <Text style={styles.roleText}>Customer</Text>
+                    onPress={() => setSelectedRole('Customer')}>
+                    <Text style={styles.roleText}>customer</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[
                       styles.roleButton,
-                      role === 'Transporter' && styles.roleButtonSelected,
+                      selectedRole === 'Transporter' && styles.roleButtonSelected,
                     ]}
-                    onPress={() => setRole('Transporter')}>
-                    <Text style={styles.roleText}>Transporter</Text>
+                    onPress={() => setSelectedRole('Transporter')}>
+                    <Text style={styles.roleText}>transporter</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </View>
 
             <View style={styles.loginButtonContainer}>
-              <CustomButton title="SignUp" onPress={()=>navigation.navigate("LoginScreen")} />
+              <CustomButton title="SignUp" onPress={handleSignup} />
             </View>
 
             <View style={styles.signupContainer}>

@@ -1,14 +1,20 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SCREENS} from '../constants/screens';
+import { useAuth } from '../context/AuthContext';
+import CustomerStack from './CustomerStack';
+import TransporterStack from './TransporterStack';
+import AdminStack from './AdminStack';
+import AdminTab from './AdminTab';
 
 const Stack = createNativeStackNavigator();
 
 // Main App Navigator
 const MainNavigator = () => {
-  return (
-    <NavigationContainer>
+  const { role } = useAuth();
+
+  if (!role) {
+    return (
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SCREENS.SplashScreen} />
         <Stack.Screen name="LoginScreen" component={SCREENS.LoginScreen} />
@@ -50,8 +56,40 @@ const MainNavigator = () => {
           name="CreatePlanScreen"
           component={SCREENS.CreatePlanScreen}
         />
+        <Stack.Screen
+          name="AdminDashboardScreen"
+          component={AdminTab}
+        />
+         <Stack.Screen
+          name="CreateBidding"
+          component={SCREENS.CreateBidding}
+        />
+         <Stack.Screen
+          name="EditProfileScreen"
+          component={SCREENS.EditProfileScreen}
+        />
+         <Stack.Screen
+          name="ViewAllBiddings"
+          component={SCREENS.ViewAllBiddings}
+        />
+          <Stack.Screen
+          name="ViewAllPlans"
+          component={SCREENS.ViewAllPlans}
+        />
+        <Stack.Screen
+          name="ViewAllBookings"
+          component={SCREENS.ViewAllBookings}
+        />
+        
       </Stack.Navigator>
-    </NavigationContainer>
+    );
+  }
+  return role === 'customer' ? (
+    <CustomerStack />
+  ) : role === 'transporter' ? (
+    <TransporterStack />
+  ) : (
+    <AdminStack />
   );
 };
 

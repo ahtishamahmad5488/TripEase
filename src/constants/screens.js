@@ -17,6 +17,13 @@ import OTPScreen from '../screens/AuthScreens/OTPScreen';
 import ViewAvailableBiddingsScreen from '../screens/TransporterPanel/AvailableBiddingScreen';
 import AcceptedBiddingsScreen from '../screens/TransporterPanel/AcceptedBiddingScreen';
 import CreatePlanScreen from '../screens/AdminPanel/CreatePlanScreen';
+import AdminDashBoardScreen from '../screens/AdminPanel/AdminDashBoardScreen';
+import CreateBidding from '../screens/AdminPanel/CreateBidding';
+import EditProfileScreen from '../screens/AdminPanel/EditProfileScreen';
+import ViewAllBiddings from '../screens/AdminPanel/ViewAllBiddings';
+import ViewAllPlans from '../screens/AdminPanel/ViewAllPlans';
+import ViewAllBookings from '../screens/AdminPanel/ViewAllBookings';
+
 
 
 export const SCREENS = {
@@ -38,5 +45,11 @@ export const SCREENS = {
   AdminScreen: AdminScreen,
   ViewAvailableBiddingsScreen: ViewAvailableBiddingsScreen,
   AcceptedBiddingsScreen: AcceptedBiddingsScreen,
-  CreatePlanScreen:CreatePlanScreen
+  CreatePlanScreen:CreatePlanScreen,
+  AdminDashBoardScreen:AdminDashBoardScreen,
+  ViewAllBiddings:ViewAllBiddings,
+  ViewAllPlans:ViewAllPlans,
+  EditProfileScreen:EditProfileScreen,
+  CreateBidding:CreateBidding,
+  ViewAllBookings:ViewAllBookings,
 };

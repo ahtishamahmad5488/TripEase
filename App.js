@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { COLORS } from './src/constants/colors';
+// App.js
+import React from 'react';
 import MainNavigator from './src/routes/MainNavigator';
+import {AuthProvider} from './src/context/AuthContext';
+import {NavigationContainer} from '@react-navigation/native';
 
-const App = () => {
-
+export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <MainNavigator/>
-    </SafeAreaView>
+    <AuthProvider>
+      <NavigationContainer>
+        <MainNavigator />
+      </NavigationContainer>
+    </AuthProvider>
   );
-};
-
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.primaryWhiteHex,
-  },
-});
+}
