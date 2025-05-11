@@ -11,16 +11,18 @@ import {ICONS} from '../../constants/icons';
 import CustomTextInput from '../../components/CustomTextField';
 import {COLORS} from '../../constants/colors';
 
-const CreateBidding = ({navigation}) => {
-  const [title, setTitle] = useState('');
+const CreatePlanDetailScreen = ({navigation}) => {
+  const [place, setPlace] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [time, setTime] = useState('');
-  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+  const [time,setTime] = useState('');
+ 
 
   return (
     <ScrollView style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
+
       {/* Header */}
       <View style={{paddingTop: 20}}>
         <ICONS.titleIcon />
@@ -31,13 +33,13 @@ const CreateBidding = ({navigation}) => {
 
       <View style={{marginBottom: 30}}>
         <View>
-          <Text style={styles.labelText}>Tour Title</Text>
+          <Text style={styles.labelText}>Place</Text>
           <CustomTextInput
             style={styles.TextInputField}
-            placeholder="Tour title"
+            placeholder="Place"
             placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={title}
-            onChangeText={setTitle}
+            value={place}
+            onChangeText={setPlace}
           />
         </View>
         <View>
@@ -61,6 +63,16 @@ const CreateBidding = ({navigation}) => {
           />
         </View>
         <View>
+          <Text style={styles.labelText}>Amount</Text>
+          <CustomTextInput
+            style={styles.TextInputField}
+            placeholder="Amount"
+            placeholderTextColor={COLORS.primaryLightGrayHex}
+            value={amount}
+            onChangeText={setAmount}
+          />
+        </View>
+        <View>
           <Text style={styles.labelText}>Time</Text>
           <CustomTextInput
             style={styles.TextInputField}
@@ -72,7 +84,7 @@ const CreateBidding = ({navigation}) => {
         </View>
       </View>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AdminDashBoardScreen")}>
-        <Text style={styles.buttonText}>Create Bidding</Text>
+        <Text style={styles.buttonText}>Create Plan</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -114,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateBidding;
+export default CreatePlanDetailScreen;

@@ -31,9 +31,9 @@ const AdminTab = () => {
           let label;
           if (route.name === 'AdminDashBoardScreen') {
             label = 'Home';
-          } else if (route.name === 'CreateBidding') {
+          } else if (route.name === 'BiddingScreen') {
             label = 'Bidding';
-          } else if (route.name === 'CreatePlanScreen') {
+          } else if (route.name === 'PlansScreen') {
             label = 'Plans';
           } else if (route.name === 'PaymentScreen') {
             label = 'Payment';
@@ -57,10 +57,10 @@ const AdminTab = () => {
         tabBarStyle: styles.tabBarStyle,
       })}>
       <Tab.Screen name="AdminDashBoardScreen" component={SCREENS.AdminDashBoardScreen} />
-      <Tab.Screen name="CreateBidding" component={SCREENS.CreateBidding} />
+      <Tab.Screen name="BiddingScreen" component={SCREENS.BiddingScreen} />
       <Tab.Screen
-        name="CreatePlanScreen"
-        component={SCREENS.CreatePlanScreen}
+        name="PlansScreen"
+        component={SCREENS.PlansScreen}
       />
       <Tab.Screen name="PaymentScreen" component={SCREENS.PaymentScreen} />
     </Tab.Navigator>

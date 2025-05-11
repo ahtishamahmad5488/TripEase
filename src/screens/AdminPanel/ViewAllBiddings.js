@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,10 +6,12 @@ import {
   StyleSheet,
   StatusBar,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
-import { ICONS } from '../../constants/icons';
+import {useNavigation} from '@react-navigation/native';
+import {ICONS} from '../../constants/icons';
 
-const dummyBiddings = [
+const initialBiddings = [
   {
     id: '1',
     tourName: 'Hunza Tour',
@@ -18,7 +20,6 @@ const dummyBiddings = [
     endDate: '2025-06-05',
     time: '9:00 AM',
     status: 'Pending',
-    acceptedBy: 'Not Yet Accepted',
   },
   {
     id: '2',
@@ -27,12 +28,23 @@ const dummyBiddings = [
     startDate: '2025-07-10',
     endDate: '2025-07-15',
     time: '7:30 AM',
-    status: 'Accepted',
-    acceptedBy: 'Zia Transport Co.',
+    status: 'Pending',
   },
 ];
 
 const ViewAllBiddingScreen = () => {
+  const navigation = useNavigation();
+  const [biddings, setBiddings] = useState(initialBiddings);
+
+  const handleUpdate = item => {
+    navigation.navigate('CreateBidding', {bidding: item});
+  };
+
+  const handleDelete = id => {
+    const updatedBiddings = biddings.filter(bid => bid.id !== id);
+    setBiddings(updatedBiddings);
+  };
+
   const renderItem = ({item}) => (
     <View style={styles.card}>
       <Text style={styles.tourName}>{item.tourName}</Text>
@@ -41,22 +53,18 @@ const ViewAllBiddingScreen = () => {
         <Text style={styles.label}>Price:</Text>
         <Text style={styles.value}>{item.price}</Text>
       </View>
-
       <View style={styles.row}>
         <Text style={styles.label}>Start:</Text>
         <Text style={styles.value}>{item.startDate}</Text>
       </View>
-
       <View style={styles.row}>
         <Text style={styles.label}>End:</Text>
         <Text style={styles.value}>{item.endDate}</Text>
       </View>
-
       <View style={styles.row}>
         <Text style={styles.label}>Time:</Text>
         <Text style={styles.value}>{item.time}</Text>
       </View>
-
       <View style={styles.row}>
         <Text style={styles.label}>Status:</Text>
         <Text
@@ -68,9 +76,19 @@ const ViewAllBiddingScreen = () => {
         </Text>
       </View>
 
-      <View style={styles.row}>
-        <Text style={styles.label}>Accepted By:</Text>
-        <Text style={styles.value}>{item.acceptedBy}</Text>
+      {/* Buttons */}
+      <View style={styles.buttonRow}>
+        <TouchableOpacity
+          style={[styles.button, {backgroundColor: '#0ACF83'}]}
+          onPress={() => handleUpdate(item)}>
+          <Text style={styles.buttonText}>Update</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.button, {backgroundColor: '#D32F2F'}]}
+          onPress={() => handleDelete(item.id)}>
+          <Text style={styles.buttonText}>Delete</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -78,18 +96,21 @@ const ViewAllBiddingScreen = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#F7F7F7'}}>
       <StatusBar barStyle="dark-content" backgroundColor="#F7F7F7" />
-      {/* Header Part */}
-      <View
-        style={{
-          marginTop: 30,
-        }}>
+      <View style={{marginTop: 30}}>
         <ICONS.titleIcon />
       </View>
       <FlatList
-        data={dummyBiddings}
+        data={biddings}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.container}
+        ListEmptyComponent={
+         <View style={{marginTop:50}}>
+           <Text style={{textAlign: 'center', marginTop: 20, color: '#777',fontSize:18,fontWeight:"600"}}>
+            No biddings available.
+          </Text>
+         </View>
+        }
       />
     </SafeAreaView>
   );
@@ -134,11 +155,26 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   accepted: {
-    color: '#2E7D32', // Green
+    color: '#2E7D32',
     fontWeight: 'bold',
   },
   pending: {
-    color: '#D32F2F', // Red
+    color: '#D32F2F',
+    fontWeight: 'bold',
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 12,
+  },
+  button: {
+    flex: 0.48,
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#FFF',
     fontWeight: 'bold',
   },
 });

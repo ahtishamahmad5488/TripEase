@@ -6,7 +6,6 @@ import MapScreen from '../screens/MapScreen';
 import DetailScreen from '../screens/DetailScreen';
 import CreateBookingScreen from '../screens/CreateBookingScreen';
 import PaymentScreen from '../screens/PaymentScreen';
-import AdminScreen from '../screens/AdminPanel/AdminScreen';
 import TransporterScreen from '../screens/TransporterPanel/TransporterScreen';
 import RegistrationScreen from '../screens/TransporterPanel/RegistrationScreen';
 import LoginScreen from '../screens/AuthScreens/LoginScreen';
@@ -16,14 +15,17 @@ import NewPasswordScreen from '../screens/AuthScreens/NewPasswordScreen';
 import OTPScreen from '../screens/AuthScreens/OTPScreen';
 import ViewAvailableBiddingsScreen from '../screens/TransporterPanel/AvailableBiddingScreen';
 import AcceptedBiddingsScreen from '../screens/TransporterPanel/AcceptedBiddingScreen';
-import CreatePlanScreen from '../screens/AdminPanel/CreatePlanScreen';
 import AdminDashBoardScreen from '../screens/AdminPanel/AdminDashBoardScreen';
 import CreateBidding from '../screens/AdminPanel/CreateBidding';
 import EditProfileScreen from '../screens/AdminPanel/EditProfileScreen';
 import ViewAllBiddings from '../screens/AdminPanel/ViewAllBiddings';
 import ViewAllPlans from '../screens/AdminPanel/ViewAllPlans';
 import ViewAllBookings from '../screens/AdminPanel/ViewAllBookings';
-
+import PlansScreen from '../screens/AdminPanel/PlansScreen';
+import CreatePlanDetailScreen from '../screens/AdminPanel/CreatePlanDetailScreen';
+import CreatePlanScreen from '../screens/AdminPanel/CreatePlanScreen';
+import BiddingScreen from '../screens/AdminPanel/BiddingScreen';
+import ViewAllAcceptedBiddings from '../screens/AdminPanel/ViewAllAcceptedBiddings';
 
 
 export const SCREENS = {
@@ -42,7 +44,7 @@ export const SCREENS = {
   DetailScreen: DetailScreen,
   CreateBookingScreen: CreateBookingScreen,
   PaymentScreen: PaymentScreen,
-  AdminScreen: AdminScreen,
+  PlansScreen:PlansScreen,
   ViewAvailableBiddingsScreen: ViewAvailableBiddingsScreen,
   AcceptedBiddingsScreen: AcceptedBiddingsScreen,
   CreatePlanScreen:CreatePlanScreen,
@@ -52,4 +54,7 @@ export const SCREENS = {
   EditProfileScreen:EditProfileScreen,
   CreateBidding:CreateBidding,
   ViewAllBookings:ViewAllBookings,
+  CreatePlanDetailScreen:CreatePlanDetailScreen,
+  BiddingScreen:BiddingScreen,
+  ViewAllAcceptedBiddings:ViewAllAcceptedBiddings,
 };

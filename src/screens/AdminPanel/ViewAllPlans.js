@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,34 +6,60 @@ import {
   StyleSheet,
   StatusBar,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import { ICONS } from '../../constants/icons';
-
-const dummyBiddings = [
-  {
-    id: '1',
-    tourName: 'Hunza Tour',
-    location: 'Lahore',
-    startDate: '2025-06-01',
-    endDate: '2025-06-05',
-    vehicleType: 'Bus',
-    capacity: '48',
-  },
-  {
-    id: '2',
-    tourName: 'Skardu Trip',
-    location: 'Islamabad',
-    startDate: '2025-07-10',
-    endDate: '2025-07-15',
-    vehicleType: 'Coster',
-    capacity: '30',
-  },
-];
+import { useNavigation } from '@react-navigation/native';
 
 const ViewAllBiddingScreen = () => {
-  const renderItem = ({item}) => (
+  const navigation = useNavigation();
+  const [biddings, setBiddings] = useState([
+    {
+      id: '1',
+      place: 'Hunza Tour',
+      startDate: '2025-06-01',
+      endDate: '2025-06-05',
+      amount: '20K',
+      time: 'Morning',
+    },
+    {
+      id: '2',
+      place: 'Skardu Tour',
+      startDate: '2025-06-01',
+      endDate: '2025-06-05',
+      amount: '30K',
+      time: 'Evening',
+    },
+    {
+      id: '3',
+      place: 'Murre Tour',
+      startDate: '2025-06-01',
+      endDate: '2025-06-05',
+      amount: '10K',
+      time: 'Morning',
+    },
+    {
+      id: '4',
+      place: 'kalam Tour',
+      startDate: '2025-06-01',
+      endDate: '2025-06-05',
+      amount: '25K',
+      time: 'Morning',
+    },
+  ]);
+
+  const handleDelete = id => {
+    const updatedList = biddings.filter(item => item.id !== id);
+    setBiddings(updatedList);
+  };
+
+  const handleUpdate = item => {
+    navigation.navigate('CreatePlanScreen', { planData: item });
+  };
+
+  const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Text style={styles.tourName}>{item.tourName}</Text>
+      <Text style={styles.tourName}>{item.place}</Text>
       <View style={styles.row}>
         <Text style={styles.label}>Start:</Text>
         <Text style={styles.value}>{item.startDate}</Text>
@@ -43,33 +69,40 @@ const ViewAllBiddingScreen = () => {
         <Text style={styles.value}>{item.endDate}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Location:</Text>
-        <Text style={styles.value}>{item.location}</Text>
+        <Text style={styles.label}>Amount:</Text>
+        <Text style={styles.value}>{item.amount}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.label}>Vehicle Type:</Text>
-        <Text style={styles.value}>{item.vehicleType}</Text>
+        <Text style={styles.label}>Time</Text>
+        <Text style={styles.value}>{item.time}</Text>
       </View>
 
-      <View style={styles.row}>
-        <Text style={styles.label}>Capacity</Text>
-        <Text style={styles.value}>{item.capacity}</Text>
+      {/* Buttons Row */}
+      <View style={styles.buttonRow}>
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: "#0ACF83" }]}
+          onPress={() => handleUpdate(item)}
+        >
+          <Text style={styles.buttonText}>Update</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: '#D32F2F' }]}
+          onPress={() => handleDelete(item.id)}
+        >
+          <Text style={styles.buttonText}>Delete</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#F7F7F7'}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#F7F7F7' }}>
       <StatusBar barStyle="dark-content" backgroundColor="#F7F7F7" />
-      {/* Header Part */}
-      <View
-        style={{
-          marginTop: 30,
-        }}>
+      <View style={{ marginTop: 30 }}>
         <ICONS.titleIcon />
       </View>
       <FlatList
-        data={dummyBiddings}
+        data={biddings}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.container}
@@ -93,7 +126,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowRadius: 6,
-    shadowOffset: {width: 0, height: 3},
+    shadowOffset: { width: 0, height: 3 },
     elevation: 5,
   },
   tourName: {
@@ -116,12 +149,19 @@ const styles = StyleSheet.create({
     color: '#444',
     flex: 1,
   },
-  accepted: {
-    color: '#2E7D32', // Green
-    fontWeight: 'bold',
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 12,
   },
-  pending: {
-    color: '#D32F2F', // Red
+  button: {
+    flex: 0.48,
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
     fontWeight: 'bold',
   },
 });

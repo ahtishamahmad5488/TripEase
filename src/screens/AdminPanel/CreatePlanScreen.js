@@ -2,125 +2,124 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
+  TextInput,
+  Button,
+  Image,
   TouchableOpacity,
-  ScrollView,
-  StatusBar,
+  Alert,
+  StyleSheet,
 } from 'react-native';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {ICONS} from '../../constants/icons';
 import CustomTextInput from '../../components/CustomTextField';
 import {COLORS} from '../../constants/colors';
 
 const CreatePlanScreen = ({navigation}) => {
-  const [title, setTitle] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [location, setLocation] = useState('');
-  const [vehicleType, setVehicleType] = useState('');
-  const [capacity, setCapacity] = useState('');
-  const [description, setDescription] = useState('');
+  const [tourName, setTourName] = useState('');
+  const [price, setPrice] = useState('');
+  const [imageUri, setImageUri] = useState(null);
+
+  const selectImage = () => {
+    const options = {
+      mediaType: 'photo',
+      quality: 1,
+    };
+
+    launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.errorCode) {
+        console.log('ImagePicker Error: ', response.errorMessage);
+      } else {
+        const uri = response.assets[0].uri;
+        setImageUri(uri);
+      }
+    });
+  };
+
+  const handleSubmit = () => {
+    if (!tourName || !price || !imageUri) {
+      Alert.alert('Please fill all fields');
+      return;
+    }
+
+    console.log('Tour Name:', tourName);
+    console.log('Price:', price);
+    console.log('Image URI:', imageUri);
+    Alert.alert('Details Submitted!');
+    // Now you can send this data to Firebase or your backend
+  };
 
   return (
-    <ScrollView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
-
-      {/* Header */}
-      <View style={{paddingTop: 20}}>
+    <View style={{flex: 1, backgroundColor: 'white', padding: 20}}>
+      {/* Header Part */}
+      <View
+        style={{
+          marginTop: 10,
+        }}>
         <ICONS.titleIcon />
       </View>
-      <View style={{marginTop: 40}}>
-        <Text style={styles.heading}>Create Tour Plan</Text>
-      </View>
-
-      <View style={{marginBottom: 30}}>
-        <View>
+      <View style={{marginTop: 30}}>
+      <View>
           <Text style={styles.labelText}>Tour Title</Text>
           <CustomTextInput
             style={styles.TextInputField}
-            placeholder="Tour title"
+            placeholder="Tour Name"
             placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={title}
-            onChangeText={setTitle}
+            value={tourName}
+            onChangeText={setTourName}
           />
         </View>
         <View>
           <Text style={styles.labelText}>Start Date</Text>
           <CustomTextInput
             style={styles.TextInputField}
-            placeholder="Start Date (e.g. 2025-05-10)"
+            placeholder="Price"
             placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={startDate}
-            onChangeText={setStartDate}
-          />
-        </View>
-        <View>
-          <Text style={styles.labelText}>End Date</Text>
-          <CustomTextInput
-            style={styles.TextInputField}
-            placeholder="End Date (e.g. 2025-05-15)"
-            placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={endDate}
-            onChangeText={setEndDate}
-          />
-        </View>
-        <View>
-          <Text style={styles.labelText}>Location</Text>
-          <CustomTextInput
-            style={styles.TextInputField}
-            placeholder="Location"
-            placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={location}
-            onChangeText={setLocation}
-          />
-        </View>
-        <View>
-          <Text style={styles.labelText}>Vehicle Type</Text>
-          <CustomTextInput
-            style={styles.TextInputField}
-            placeholder="Vehicle Type"
-            placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={vehicleType}
-            onChangeText={setVehicleType}
-          />
-        </View>
-        <View>
-          <Text style={styles.labelText}>Capacity</Text>
-          <CustomTextInput
-            style={styles.TextInputField}
-            placeholder="Capacity (e.g. 18 persons)"
-            placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={capacity}
-            onChangeText={setCapacity}
-          />
-        </View>
-        <View>
-          <Text style={styles.labelText}>Description</Text>
-          <CustomTextInput
-            style={[styles.TextInputField, {height: 100}]}
-            placeholder="Description"
-            placeholderTextColor={COLORS.primaryLightGrayHex}
-            value={description}
-            onChangeText={setDescription}
-            multiline
+            value={price}
+            onChangeText={setPrice}
           />
         </View>
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
-        <Text style={styles.buttonText}>Create Plan</Text>
+
+      <View style={{marginTop: 30}}>
+        <TouchableOpacity
+          onPress={selectImage}
+          style={{backgroundColor: '#ccc', padding: 12, borderRadius: 10}}>
+          <Text style={{textAlign: 'center', fontWeight: '500', fontSize: 14}}>
+            Select Image
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {imageUri && (
+        <Image
+          source={{uri: imageUri}}
+          style={{
+            width: 150,
+            height: 150,
+            marginBottom: 10,
+            alignSelf: 'center',
+            borderRadius: 10,
+            marginTop: 20,
+            justifyContent: 'center',
+          }}
+        />
+      )}
+     <View style={{marginTop:30}}>
+     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("CreatePlanDetailScreen")}>
+        <Text style={styles.buttonText}>Next Plan Details</Text>
       </TouchableOpacity>
-    </ScrollView>
+     </View>
+    </View>
   );
 };
 
+export default CreatePlanScreen;
+
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  heading: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#2D3E50',
+  inputContainer: {
+    marginTop: 12,
   },
   labelText: {
     fontSize: 14,
@@ -135,11 +134,11 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#0ACF83',
-    padding: 15,
+    padding: 12,
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 20,
     alignItems: 'center',
-    marginBottom:40,
+    marginBottom: 40,
   },
   buttonText: {
     color: '#fff',
@@ -147,5 +146,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-export default CreatePlanScreen;

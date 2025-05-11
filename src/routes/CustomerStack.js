@@ -1,16 +1,21 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { SCREENS } from '../constants/screens';
+import {SCREENS} from '../constants/screens';
 
 const Stack = createNativeStackNavigator();
 
-const CustomerStack = () => {
-  return (
+const CustomerStack = () => 
+   (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeScreen" component={SCREENS.HomeScreen} />
-      {/* Add more customer-specific screens here */}
+      <Stack.Screen name="DetailScreen" component={SCREENS.DetailScreen} />
+      <Stack.Screen
+        name="CreateBookingScreen"
+        component={SCREENS.CreateBookingScreen}
+      />
+      <Stack.Screen name="PaymentScreen" component={SCREENS.PaymentScreen} />
     </Stack.Navigator>
   );
-};
+
 
 export default CustomerStack;

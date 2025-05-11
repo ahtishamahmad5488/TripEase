@@ -28,20 +28,16 @@ const SignUpScreen = ({navigation}) => {
   const { setRole } = useAuth();
   const [selectedRole, setSelectedRole] = useState('');   // 'Customer' or 'Transporter'
 
-  // const handleSignup = () => {
-  //   setRole(selectedRole); // Save role in context
-  //   navigation.navigate('LoginScreen'); // Move to login screen
-  // };
-
-  const handleSignup = () => {
-    if (!selectedRole) {
-      alert('Please select a role');
-      return;
-    }
-    setRole(selectedRole);
-    console.log('Selected role:', selectedRole);
-    navigation.navigate('LoginScreen');
-  };
+  // Change handleSignup to NOT set authentication state
+// const handleSignup = () => {
+//   if (!selectedRole) {
+//     alert('Please select a role');
+//     return;
+//   }
+//   // Only set role, NOT authenticate
+//   setRole(selectedRole.toLowerCase()); // Ensure lowercase
+//   navigation.navigate('LoginScreen');
+// };
 
   return (
     <ImageBackground
@@ -133,17 +129,17 @@ const SignUpScreen = ({navigation}) => {
                   <TouchableOpacity
                     style={[
                       styles.roleButton,
-                      selectedRole === 'Customer' && styles.roleButtonSelected,
+                      selectedRole === 'customer' && styles.roleButtonSelected,
                     ]}
-                    onPress={() => setSelectedRole('Customer')}>
+                    onPress={() => setSelectedRole('customer')}>
                     <Text style={styles.roleText}>customer</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[
                       styles.roleButton,
-                      selectedRole === 'Transporter' && styles.roleButtonSelected,
+                      selectedRole === 'transporter' && styles.roleButtonSelected,
                     ]}
-                    onPress={() => setSelectedRole('Transporter')}>
+                    onPress={() => setSelectedRole('transporter')}>
                     <Text style={styles.roleText}>transporter</Text>
                   </TouchableOpacity>
                 </View>

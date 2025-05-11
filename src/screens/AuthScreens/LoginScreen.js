@@ -22,14 +22,29 @@ const LoginScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {role, login} = useAuth();
+  const {role, login, isAuthenticated} = useAuth();
 
-  const handleLogin = () => {
-    login(role); // Optionally set logged in
-    if (role === 'customer') navigation.replace('CustomerStack');
-    else if (role === 'transporter') navigation.replace('TransporterStack');
-    else navigation.replace('AdminStack');
-  };
+  // const handleLogin = async () => {
+  //   try {
+  //     if (!role) {
+  //       navigation.navigate("AdminScreen")
+  //       return;
+  //     }
+  //     await login(role); // Wait for login to complete
+  //     console.log(role);
+
+  //   //   if (role === 'customer') {
+  //   //     navigation.navigate('HomeScreen');
+  //   //   } else if (role === 'transporter') {
+  //   //     navigation.navigate('TransporterScreen');
+  //   //   } else {
+  //   //     navigation.navigate('AdminDashBoardScreen');
+  //   //   }
+  //   } catch (error) {
+  //     console.error('Login failed:', error);
+  //     alert('Login failed. Please try again.');
+  //   }
+  // };
 
   return (
     <ImageBackground
@@ -86,10 +101,8 @@ const LoginScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <View style={styles.loginButtonContainer}>
-              <CustomButton
-                title="Login"
-                onPress={()=> navigation.navigate("AdminDashboardScreen")}
-              />
+              <CustomButton title="Login" 
+              onPress={()=> navigation.navigate("AdminDashBoardScreen")} />
             </View>
 
             <View style={styles.signupContainer}>
