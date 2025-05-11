@@ -1,74 +1,149 @@
-import React from 'react';
-import {View, Text, StyleSheet, ScrollView, StatusBar} from 'react-native';
-import { ICONS } from '../../constants/icons';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
+import {ICONS} from '../../constants/icons';
 
-const AcceptedBiddingsScreen = () => {
-  // Dummy data for now
-  const acceptedBiddings = [
-    {id: '1', tourName: 'Hunza Valley Tour', amount: 'PKR 30,000', pickup: 'Lahore'},
-    {id: '2', tourName: 'Skardu Adventure', amount: 'PKR 22,000', pickup: 'Islamabad'},
-    {id: '3', tourName: 'Murree Fun Trip', amount: 'PKR 12,000', pickup: 'Rawalpindi'},
-    {id: '4', tourName: 'Swat Summer Tour', amount: 'PKR 18,000', pickup: 'Multan'},
-    {id: '5', tourName: 'Neelum Valley Luxury', amount: 'PKR 24,000', pickup: 'Karachi'},
-    {id: '6', tourName: 'Azad Kashmir Tour', amount: 'PKR 19,500', pickup: 'Gujranwala'},
-    {id: '7', tourName: 'Fairy Meadows Explorer', amount: 'PKR 35,000', pickup: 'Faisalabad'},
-    {id: '8', tourName: 'Ratti Gali Adventure', amount: 'PKR 27,000', pickup: 'Hyderabad'},
-  ];
+const AcceptedBiddingScreen = ({navigation}) => {
+  const [availableBiddings, setAvailableBiddings] = useState([
+    {
+      id: '1',
+      title: 'Northern Adventure',
+      startDate: '2025-06-01',
+      endDate: '2025-06-05',
+      time: '10:00 AM',
+    },
+    {
+      id: '2',
+      title: 'Kashmir Escape',
+      startDate: '2025-06-10',
+      endDate: '2025-06-14',
+      time: '8:30 AM',
+    },
+    {
+      id: '3',
+      title: 'Skardu Expedition',
+      startDate: '2025-06-15',
+      endDate: '2025-06-20',
+      time: '9:00 AM',
+    },
+    {
+      id: '4',
+      title: 'Swat Valley Getaway',
+      startDate: '2025-06-18',
+      endDate: '2025-06-21',
+      time: '7:45 AM',
+    },
+  ]);
+
+  // Function to remove bid on "Accepted"
+  const handleAccept = id => {
+    const filtered = availableBiddings.filter(bid => bid.id !== id);
+    setAvailableBiddings(filtered);
+  };
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
-            {/* Header Part */}
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginTop: 10,
-              }}>
-              <ICONS.titleIcon />
-            </View>
-      <View style={{marginTop:30}}>
-      <Text style={styles.heading}>Accepted Biddings</Text>
+      <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+      <View style={styles.header}>
+        <ICONS.titleIcon />
       </View>
 
-      {acceptedBiddings.map(bid => (
-        <View key={bid.id} style={styles.card}>
-          <Text style={styles.tourName}>{bid.tourName}</Text>
-          <Text style={styles.bidDetail}>Amount: {bid.amount}</Text>
-          <Text style={styles.bidDetail}>Pickup Location: {bid.pickup}</Text>
+     <View style={{paddingHorizontal:20}}>
+     <Text style={styles.heading}>Accepted Biddings</Text>
+     </View>
+
+      {availableBiddings.map(bid => (
+        <View style={{paddingHorizontal:20}}>
+          <View key={bid.id} style={styles.card}>
+          <Text style={styles.tourTitle}>{bid.title}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Start Date:</Text>
+            <Text style={styles.value}>{bid.startDate}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>End Date:</Text>
+            <Text style={styles.value}>{bid.endDate}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Time:</Text>
+            <Text style={styles.value}>{bid.time}</Text>
+          </View>
+        </View>
         </View>
       ))}
+
+      {availableBiddings.length === 0 && (
+        <Text style={styles.emptyText}>No biddings available.</Text>
+      )}
     </ScrollView>
   );
 };
 
+export default AcceptedBiddingScreen;
+
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  header: {
+    backgroundColor: '#5E3B76',
     padding: 20,
-    backgroundColor: '#fff',
   },
   heading: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
+    marginTop: 30,
     marginBottom: 20,
     color: '#2D3E50',
   },
   card: {
-    backgroundColor: '#F0F4F8',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
+    backgroundColor: '#F1F3F6',
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 16,
+    elevation: 3,
   },
-  tourName: {
-    fontSize: 18,
+  tourTitle: {
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#2D3E50',
+    marginBottom: 10,
   },
-  bidDetail: {
-    fontSize: 14,
-    color: '#4A4A4A',
+  row: {
+    flexDirection: 'row',
+    marginBottom: 6,
+  },
+  label: {
+    fontWeight: '600',
+    color: '#444',
+    width: 100,
+  },
+  value: {
+    color: '#555',
+  },
+  acceptButton: {
+    marginTop: 12,
+    backgroundColor: '#27AE60',
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  acceptText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  emptyText: {
+    textAlign: 'center',
+    marginTop: 40,
+    color: '#999',
+    fontSize: 16,
   },
 });
-
-export default AcceptedBiddingsScreen;

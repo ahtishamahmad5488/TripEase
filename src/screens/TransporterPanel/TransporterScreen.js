@@ -12,40 +12,35 @@ import {ICONS} from '../../constants/icons';
 const TransporterScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
-      {/* Header Part */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginTop: 10,
-        }}>
+      <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+      <View style={styles.header}>
         <ICONS.titleIcon />
-        <TouchableOpacity onPress={() => {}}>
-          <ICONS.logoIcon style={{right: 20}} />
-        </TouchableOpacity>
       </View>
-      <View style={{marginTop: 30}}>
-        <Text style={styles.heading}>Transporter</Text>
-        <Text style={styles.heading}>Dashboard</Text>
+      <View style={{marginTop: 20, paddingHorizontal: 20}}>
+        <Text style={styles.heading}>Transporter Dashboard</Text>
       </View>
 
-      <View style={{marginTop: 30}}>
+      <View style={{marginTop: 20,paddingHorizontal:20}}>
         {/* Vehicle Registration */}
-        <TouchableOpacity style={styles.card} onPress={()=> navigation.navigate("RegistrationScreen")}>
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => navigation.navigate('RegistrationScreen')}>
           <Text style={styles.cardText}>Vehicle Registration</Text>
           <ICONS.arrowIcon width={30} height={30} />
         </TouchableOpacity>
 
         {/* View Available Biddings */}
-        <TouchableOpacity style={styles.card} onPress={()=> navigation.navigate("ViewAvailableBiddingScreen")}>
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => navigation.navigate('ViewAvailableBiddingScreen')}>
           <Text style={styles.cardText}>View Available Biddings</Text>
           <ICONS.arrowIcon width={30} height={30} />
         </TouchableOpacity>
 
         {/* Accepted Biddings */}
-        <TouchableOpacity style={styles.card} onPress={()=> navigation.navigate("AcceptedBiddingScreen")}>
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => navigation.navigate('AcceptedBiddingScreen')}>
           <Text style={styles.cardText}>Accepted Biddings</Text>
           <ICONS.arrowIcon width={30} height={30} />
         </TouchableOpacity>
@@ -56,62 +51,21 @@ const TransporterScreen = ({navigation}) => {
           <ICONS.arrowIcon width={30} height={30} />
         </TouchableOpacity>
       </View>
-
-      {/* Vehicle Info Section */}
-      <View style={styles.vehicleInfo}>
-        <Text style={styles.vehicleHeading}>Vehicle Info</Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginLeft: 6,
-          }}>
-          <Text style={styles.vehicleText}>Vehicle Type:</Text>
-          <Text style={styles.vehicleText}>Nova Sky</Text>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginLeft: 6,
-          }}>
-          <Text style={styles.vehicleText}>Number Plate:</Text>
-          <Text style={styles.vehicleText}>LEB-1234</Text>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginLeft: 6,
-          }}>
-          <Text style={styles.vehicleText}>Capacity:</Text>
-          <Text style={styles.vehicleText}>18 persons</Text>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginLeft: 6,
-          }}>
-          <Text style={styles.vehicleText}>Registered:</Text>
-          <Text style={styles.vehicleText}>✅</Text>
-        </View>
-      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    flex: 1,
     backgroundColor: '#fff',
   },
+  header: {
+    backgroundColor: '#5E3B76',
+    padding: 20,
+  },
   heading: {
-    fontSize: 42,
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#2D3E50',
   },

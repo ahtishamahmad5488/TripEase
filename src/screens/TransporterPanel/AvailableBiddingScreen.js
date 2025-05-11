@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -10,85 +10,146 @@ import {
 import {ICONS} from '../../constants/icons';
 
 const ViewAvailableBiddingsScreen = ({navigation}) => {
-  // Dummy data for now
-  const availableBiddings = [
-    {id: '1', tourName: 'Northern Adventure', amount: 'PKR 25,000', status: 'Open'},
-    {id: '2', tourName: 'Kashmir Escape', amount: 'PKR 18,500', status: 'Open'},
-    {id: '3', tourName: 'Skardu Expedition', amount: 'PKR 28,000', status: 'Open'},
-    {id: '4', tourName: 'Swat Valley Getaway', amount: 'PKR 15,000', status: 'Open'},
-    {id: '5', tourName: 'Murree Day Tour', amount: 'PKR 10,000', status: 'Open'},
-    {id: '6', tourName: 'Fairy Meadows Hike', amount: 'PKR 32,000', status: 'Open'},
-    {id: '7', tourName: 'Neelum Valley Escape', amount: 'PKR 20,000', status: 'Open'},
-  ];
+  const [availableBiddings, setAvailableBiddings] = useState([
+    {
+      id: '1',
+      title: 'Northern Adventure',
+      startDate: '2025-06-01',
+      endDate: '2025-06-05',
+      time: '10:00 AM',
+    },
+    {
+      id: '2',
+      title: 'Kashmir Escape',
+      startDate: '2025-06-10',
+      endDate: '2025-06-14',
+      time: '8:30 AM',
+    },
+    {
+      id: '3',
+      title: 'Skardu Expedition',
+      startDate: '2025-06-15',
+      endDate: '2025-06-20',
+      time: '9:00 AM',
+    },
+    {
+      id: '4',
+      title: 'Swat Valley Getaway',
+      startDate: '2025-06-18',
+      endDate: '2025-06-21',
+      time: '7:45 AM',
+    },
+  ]);
+
+  // Function to remove bid on "Accepted"
+  const handleAccept = id => {
+    const filtered = availableBiddings.filter(bid => bid.id !== id);
+    setAvailableBiddings(filtered);
+  };
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
-      {/* Header Part */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginTop: 10,
-        }}>
+      <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+      <View style={styles.header}>
         <ICONS.titleIcon />
       </View>
-      <View style={{marginTop: 30}}>
-        <Text style={styles.heading}>Available Biddings</Text>
-      </View>
+
+     <View style={{paddingHorizontal:20}}>
+     <Text style={styles.heading}>Available Biddings</Text>
+     </View>
+
       {availableBiddings.map(bid => (
-        <View key={bid.id} style={styles.card}>
-          <View>
-            <Text style={styles.tourName}>{bid.tourName}</Text>
-            <Text style={styles.bidDetail}>Amount: {bid.amount}</Text>
-            <Text style={styles.bidDetail}>Status: {bid.status}</Text>
+        <View style={{paddingHorizontal:20}}>
+          <View key={bid.id} style={styles.card}>
+          <Text style={styles.tourTitle}>{bid.title}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Start Date:</Text>
+            <Text style={styles.value}>{bid.startDate}</Text>
           </View>
-          <TouchableOpacity onPress={() => {}} style={styles.bidButton}>
-            <Text style={{color: '#fff'}}>Bid Now</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>End Date:</Text>
+            <Text style={styles.value}>{bid.endDate}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Time:</Text>
+            <Text style={styles.value}>{bid.time}</Text>
+          </View>
+
+          <TouchableOpacity
+            style={styles.acceptButton}
+            onPress={() => handleAccept(bid.id)}>
+            <Text style={styles.acceptText}>Accepted</Text>
           </TouchableOpacity>
         </View>
+        </View>
       ))}
+
+      {availableBiddings.length === 0 && (
+        <Text style={styles.emptyText}>No biddings available.</Text>
+      )}
     </ScrollView>
   );
 };
 
+export default ViewAvailableBiddingsScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  header: {
+    backgroundColor: '#5E3B76',
     padding: 20,
-    backgroundColor: '#fff',
   },
   heading: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
+    marginTop: 30,
     marginBottom: 20,
     color: '#2D3E50',
   },
   card: {
-    backgroundColor: '#F5F6FA',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    backgroundColor: '#F1F3F6',
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 16,
+    elevation: 3,
   },
-  tourName: {
-    fontSize: 18,
+  tourTitle: {
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#2D3E50',
+    marginBottom: 10,
   },
-  bidDetail: {
-    fontSize: 14,
-    color: '#4A4A4A',
+  row: {
+    flexDirection: 'row',
+    marginBottom: 6,
   },
-  bidButton: {
-    backgroundColor: '#2D9CDB',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
+  label: {
+    fontWeight: '600',
+    color: '#444',
+    width: 100,
+  },
+  value: {
+    color: '#555',
+  },
+  acceptButton: {
+    marginTop: 12,
+    backgroundColor: '#0ACF83',
+    paddingVertical: 10,
     borderRadius: 8,
+    alignItems: 'center',
+  },
+  acceptText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  emptyText: {
+    textAlign: 'center',
+    marginTop: 40,
+    color: '#999',
+    fontSize: 16,
   },
 });
-
-export default ViewAvailableBiddingsScreen;
