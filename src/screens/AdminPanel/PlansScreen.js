@@ -1,17 +1,20 @@
 // AdminDashboardScreen.js
 
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
 import {ICONS} from '../../constants/icons';
 
 const PlansScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      {/* Header Part */}
-      <View
-        style={{
-          marginTop: 10,
-        }}>
+      <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+      <View style={styles.header}>
         <ICONS.titleIcon />
       </View>
       <View
@@ -39,8 +42,10 @@ export default PlansScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
-    backgroundColor: '#fff',
+  },
+  header: {
+    backgroundColor: '#5E3B76',
+    padding: 20,
   },
   buttonRow: {
     justifyContent: 'center',

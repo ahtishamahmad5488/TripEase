@@ -1,19 +1,16 @@
 // AdminDashboardScreen.js
 
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, StatusBar} from 'react-native';
 import {ICONS} from '../../constants/icons';
 
 const BiddingScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      {/* Header Part */}
-      <View
-        style={{
-          marginTop: 10,
-        }}>
-        <ICONS.titleIcon />
-      </View>
+      <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+           <View style={styles.header}>
+             <ICONS.titleIcon />
+           </View>
       <View
         style={{alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
         <View style={styles.buttonRow}>
@@ -45,12 +42,14 @@ export default BiddingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
-    backgroundColor: '#fff',
+  },
+  header: {
+    backgroundColor: '#5E3B76',
+    padding: 20,
   },
   buttonRow: {
     justifyContent: 'center',
-    gap: 20, // Or use margin for older versions
+    gap: 20,
   },
   button: {
     backgroundColor: '#0ACF83',

@@ -26,6 +26,7 @@ import CreatePlanDetailScreen from '../screens/AdminPanel/CreatePlanDetailScreen
 import CreatePlanScreen from '../screens/AdminPanel/CreatePlanScreen';
 import BiddingScreen from '../screens/AdminPanel/BiddingScreen';
 import ViewAllAcceptedBiddings from '../screens/AdminPanel/ViewAllAcceptedBiddings';
+import ViewAllVehicle from '../screens/AdminPanel/ViewAllVehicle';
 
 
 export const SCREENS = {
@@ -57,4 +58,5 @@ export const SCREENS = {
   CreatePlanDetailScreen:CreatePlanDetailScreen,
   BiddingScreen:BiddingScreen,
   ViewAllAcceptedBiddings:ViewAllAcceptedBiddings,
+  ViewAllVehicle:ViewAllVehicle
 };

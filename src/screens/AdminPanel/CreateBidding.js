@@ -16,20 +16,18 @@ const CreateBidding = ({navigation}) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [time, setTime] = useState('');
-  const [description, setDescription] = useState('');
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
-      {/* Header */}
-      <View style={{paddingTop: 20}}>
+ <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+      <View style={styles.header}>
         <ICONS.titleIcon />
       </View>
-      <View style={{marginTop: 40}}>
-        <Text style={styles.heading}>Create Tour Plan</Text>
+      <View style={{marginTop: 40,paddingHorizontal:18}}>
+        <Text style={styles.heading}>Create Bidding</Text>
       </View>
 
-      <View style={{marginBottom: 30}}>
+      <View style={{marginBottom: 30,paddingHorizontal:18,marginTop:30}}>
         <View>
           <Text style={styles.labelText}>Tour Title</Text>
           <CustomTextInput
@@ -71,17 +69,22 @@ const CreateBidding = ({navigation}) => {
           />
         </View>
       </View>
+      <View style={{paddingHorizontal:18}}>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AdminDashBoardScreen")}>
         <Text style={styles.buttonText}>Create Bidding</Text>
       </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
+  },
+  header: {
+    backgroundColor: '#5E3B76',
     padding: 20,
-    backgroundColor: '#fff',
   },
   heading: {
     fontSize: 28,
@@ -90,8 +93,10 @@ const styles = StyleSheet.create({
   },
   labelText: {
     fontSize: 14,
-    color: '#fff',
+    color: 'black',
     marginBottom: 5,
+    fontWeight:"500",
+    marginTop:10,
   },
   TextInputField: {
     backgroundColor: COLORS.primaryWhiteHexRGBA,

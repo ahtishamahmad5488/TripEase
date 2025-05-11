@@ -90,10 +90,10 @@ const ViewAllAcceptedBiddings = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" backgroundColor="#F7F7F7" />
-      <View style={{marginTop:30}}>
-        <ICONS.titleIcon />
-      </View>
+       <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+            <View style={styles.header}>
+              <ICONS.titleIcon />
+            </View>
 
       <FlatList
         data={biddings}
@@ -124,6 +124,10 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     paddingBottom: 30, 
+  },
+  header: {
+    backgroundColor: '#5E3B76',
+    padding: 20,
   },
   card: {
     backgroundColor: '#fff',

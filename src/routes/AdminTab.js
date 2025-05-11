@@ -35,8 +35,8 @@ const AdminTab = () => {
             label = 'Bidding';
           } else if (route.name === 'PlansScreen') {
             label = 'Plans';
-          } else if (route.name === 'PaymentScreen') {
-            label = 'Payment';
+          } else if (route.name === 'ViewAllVehicle') {
+            label = 'Vehicle';
           }
           return (
             <View style={styles.iconContainer}>
@@ -62,7 +62,7 @@ const AdminTab = () => {
         name="PlansScreen"
         component={SCREENS.PlansScreen}
       />
-      <Tab.Screen name="PaymentScreen" component={SCREENS.PaymentScreen} />
+      <Tab.Screen name="ViewAllVehicle" component={SCREENS.ViewAllVehicle} />
     </Tab.Navigator>
   );
 };

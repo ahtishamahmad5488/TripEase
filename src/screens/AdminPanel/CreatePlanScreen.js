@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Alert,
   StyleSheet,
+  StatusBar,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {ICONS} from '../../constants/icons';
@@ -51,15 +52,12 @@ const CreatePlanScreen = ({navigation}) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white', padding: 20}}>
-      {/* Header Part */}
-      <View
-        style={{
-          marginTop: 10,
-        }}>
-        <ICONS.titleIcon />
-      </View>
-      <View style={{marginTop: 30}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
+     <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+           <View style={styles.header}>
+             <ICONS.titleIcon />
+           </View>
+      <View style={{marginTop: 30,paddingHorizontal:20}}>
       <View>
           <Text style={styles.labelText}>Tour Title</Text>
           <CustomTextInput
@@ -82,7 +80,7 @@ const CreatePlanScreen = ({navigation}) => {
         </View>
       </View>
 
-      <View style={{marginTop: 30}}>
+      <View style={{marginTop: 30,paddingHorizontal:20}}>
         <TouchableOpacity
           onPress={selectImage}
           style={{backgroundColor: '#ccc', padding: 12, borderRadius: 10}}>
@@ -106,7 +104,7 @@ const CreatePlanScreen = ({navigation}) => {
           }}
         />
       )}
-     <View style={{marginTop:30}}>
+     <View style={{marginTop:30,paddingHorizontal:20}}>
      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("CreatePlanDetailScreen")}>
         <Text style={styles.buttonText}>Next Plan Details</Text>
       </TouchableOpacity>
@@ -118,8 +116,9 @@ const CreatePlanScreen = ({navigation}) => {
 export default CreatePlanScreen;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    marginTop: 12,
+   header: {
+    backgroundColor: '#5E3B76',
+    padding: 20,
   },
   labelText: {
     fontSize: 14,

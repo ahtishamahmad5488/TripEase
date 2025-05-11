@@ -95,8 +95,8 @@ const ViewAllBiddingScreen = () => {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#F7F7F7'}}>
-      <StatusBar barStyle="dark-content" backgroundColor="#F7F7F7" />
-      <View style={{marginTop: 30}}>
+      <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+      <View style={styles.header}>
         <ICONS.titleIcon />
       </View>
       <FlatList
@@ -105,11 +105,18 @@ const ViewAllBiddingScreen = () => {
         keyExtractor={item => item.id}
         contentContainerStyle={styles.container}
         ListEmptyComponent={
-         <View style={{marginTop:50}}>
-           <Text style={{textAlign: 'center', marginTop: 20, color: '#777',fontSize:18,fontWeight:"600"}}>
-            No biddings available.
-          </Text>
-         </View>
+          <View style={{marginTop: 50}}>
+            <Text
+              style={{
+                textAlign: 'center',
+                marginTop: 20,
+                color: '#777',
+                fontSize: 18,
+                fontWeight: '600',
+              }}>
+              No biddings available.
+            </Text>
+          </View>
         }
       />
     </SafeAreaView>
@@ -121,7 +128,10 @@ export default ViewAllBiddingScreen;
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#F7F7F7',
+  },
+  header: {
+    backgroundColor: '#5E3B76',
+    padding: 20,
   },
   card: {
     backgroundColor: '#FFFFFF',

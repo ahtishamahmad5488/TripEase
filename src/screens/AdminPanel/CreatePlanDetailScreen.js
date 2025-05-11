@@ -21,17 +21,15 @@ const CreatePlanDetailScreen = ({navigation}) => {
 
   return (
     <ScrollView style={styles.container}>
-      <StatusBar barStyle={'dark-content'} />
-
-      {/* Header */}
-      <View style={{paddingTop: 20}}>
-        <ICONS.titleIcon />
-      </View>
-      <View style={{marginTop: 40}}>
+      <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
+            <View style={styles.header}>
+              <ICONS.titleIcon />
+            </View>
+      <View style={{marginTop: 40,paddingHorizontal:20}}>
         <Text style={styles.heading}>Create Tour Plan</Text>
       </View>
 
-      <View style={{marginBottom: 30}}>
+      <View style={{marginBottom: 30,paddingHorizontal:20}}>
         <View>
           <Text style={styles.labelText}>Place</Text>
           <CustomTextInput
@@ -83,17 +81,23 @@ const CreatePlanDetailScreen = ({navigation}) => {
           />
         </View>
       </View>
+      <View style={{paddingHorizontal:20}}>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AdminDashBoardScreen")}>
         <Text style={styles.buttonText}>Create Plan</Text>
       </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    flex:1,
     backgroundColor: '#fff',
+  },
+  header: {
+    backgroundColor: '#5E3B76',
+    padding: 20,
   },
   heading: {
     fontSize: 28,
