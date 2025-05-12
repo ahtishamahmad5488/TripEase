@@ -21,6 +21,7 @@ const RegistrationScreen = ({navigation}) => {
   const [driverContactNo, setDriverContactNo] = useState('');
   const [cnic, setCnic] = useState('');
   const [licenseNo, setLicenseNo] = useState('');
+  const [model, setModel] = useState('');
   const [motorType, setMotorType] = useState('');
   const [capacity, setCapacity] = useState('');
 
@@ -86,6 +87,16 @@ const RegistrationScreen = ({navigation}) => {
                   placeholderTextColor={COLORS.primaryLightGrayHex}
                   value={motorType}
                   onChangeText={setMotorType}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.labelText}>Model</Text>
+                <CustomTextInput
+                  style={styles.TextInputField}
+                  placeholder="Model"
+                  placeholderTextColor={COLORS.primaryLightGrayHex}
+                  value={model}
+                  onChangeText={setModel}
                 />
               </View>
               <View style={styles.inputContainer}>

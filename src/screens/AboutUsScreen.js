@@ -1,208 +1,137 @@
-// // import React from 'react';
-// // import {View, ScrollView, Image} from 'react-native';
-// // import {Text, Card, Button, Appbar, Avatar} from 'react-native-paper';
-// // import MapView, {Marker} from 'react-native-maps';
-
-// // const AboutUsScreen = () => {
-// //   return (
-// //     <ScrollView style={{flex: 1, backgroundColor: '#1A1A1A'}}>
-// //       <Appbar.Header style={{backgroundColor: '#121212'}}>
-// //         <Appbar.Content title="About Us" titleStyle={{color: 'white'}} />
-// //       </Appbar.Header>
-
-// //       <View style={{padding: 20}}>
-// //         <Text
-// //           variant="headlineMedium"
-// //           style={{color: 'white', marginBottom: 10}}>
-// //           Welcome to TRIPEASE
-// //         </Text>
-// //         <Text style={{color: '#ccc', marginBottom: 20}}>
-// //           Your ultimate travel companion, making your journeys smooth and
-// //           hassle-free.
-// //         </Text>
-
-// //         {/* Travel Experience Images */}
-// //         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-// //           {[1, 2, 3].map((_, index) => (
-// //             <Image
-// //               key={index}
-// //               source={{
-// //                 uri: 'https://source.unsplash.com/random/300x200?travel',
-// //               }}
-// //               style={{
-// //                 width: 150,
-// //                 height: 100,
-// //                 borderRadius: 10,
-// //                 marginRight: 10,
-// //               }}
-// //             />
-// //           ))}
-// //         </ScrollView>
-
-// //         {/* Contact Us Section */}
-// //         <Card style={{backgroundColor: '#222', marginTop: 20, padding: 15}}>
-// //           <Text
-// //             variant="titleMedium"
-// //             style={{color: 'white', marginBottom: 10}}>
-// //             Contact Us
-// //           </Text>
-// //           <Text style={{color: '#ccc'}}>📍 Office: XYZ Street, Your City</Text>
-// //           <Text style={{color: '#ccc'}}>📞 Phone: +123 456 789</Text>
-// //           <Text style={{color: '#ccc'}}>✉️ Email: support@tripease.com</Text>
-// //         </Card>
-
-// //         {/* Social Media Icons */}
-// //         <View
-// //           style={{
-// //             flexDirection: 'row',
-// //             justifyContent: 'space-around',
-// //             marginVertical: 20,
-// //           }}>
-// //           {['facebook', 'instagram', 'twitter', 'linkedin'].map(
-// //             (icon, index) => (
-// //               <Avatar.Icon
-// //                 key={index}
-// //                 size={50}
-// //                 icon={icon}
-// //                 style={{backgroundColor: '#333'}}
-// //               />
-// //             ),
-// //           )}
-// //         </View>
-
-// //         {/* Map Section */}
-// //         <MapView
-// //           style={{height: 200, borderRadius: 10}}
-// //           initialRegion={{
-// //             latitude: 37.78825,
-// //             longitude: -122.4324,
-// //             latitudeDelta: 0.0922,
-// //             longitudeDelta: 0.0421,
-// //           }}>
-// //           <Marker coordinate={{latitude: 37.78825, longitude: -122.4324}} />
-// //         </MapView>
-
-// //         {/* Live Chat Button */}
-// //         <Button
-// //           mode="contained"
-// //           style={{marginTop: 20, backgroundColor: '#4CAF50'}}>
-// //           Live Chat
-// //         </Button>
-// //       </View>
-// //     </ScrollView>
-// //   );
-// // };
-
-// // export default AboutUsScreen;
-// import React from 'react';
-// import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
-// import {Button, Card, Avatar} from 'react-native-paper';
-// import MapView, {Marker} from 'react-native-maps';
-// // import Icon from 'react-native-vector-icons/FontAwesome';
-
-// const AboutUsScreen = () => {
-//   return (
-//     <ScrollView style={styles.container}>
-//       {/* Header Image */}
-//       <Image
-//         source={require('../assets/icons/backgroundImage.jpg')}
-//         style={styles.headerImage}
-//       />
-
-//       {/* About Us Section */}
-//       <View style={styles.section}>
-//         <Text style={styles.title}>About Us</Text>
-//         <Text style={styles.description}>
-//           Welcome to TripEase! We offer the best travel experiences with expert
-//           guidance.
-//         </Text>
-//       </View>
-
-//       {/* Contact Details */}
-//       <Card style={styles.card}>
-//         <Card.Title
-//           title="Contact Us"
-//           left={props => <Avatar.Icon {...props} icon="phone" />}
-//         />
-//         <Card.Content>
-//           <Text style={styles.contactText}>
-//             {/* <Icon name="map-marker" size={16} /> 123 Street, Karachi, Pakistan */}
-//           </Text>
-//           <Text style={styles.contactText}>
-//             {/* <Icon name="phone" size={16} /> +92 300 1234567 */}
-//           </Text>
-//           <Text style={styles.contactText}>
-//             {/* <Icon name="envelope" size={16} /> info@tripease.com */}
-//           </Text>
-//         </Card.Content>
-//       </Card>
-
-//       {/* Social Media Icons */}
-//       {/* <View style={styles.socialIcons}>
-//         <Icon name="facebook" size={30} color="#3b5998" />
-//         <Icon name="twitter" size={30} color="#1DA1F2" />
-//         <Icon name="instagram" size={30} color="#C13584" />
-//         <Icon name="linkedin" size={30} color="#0077B5" />
-//       </View> */}
-
-//       {/* Google Map */}
-//       <MapView
-//         style={styles.map}
-//         initialRegion={{
-//           latitude: 24.8607,
-//           longitude: 67.0011,
-//           latitudeDelta: 0.02,
-//           longitudeDelta: 0.02,
-//         }}>
-//         <Marker
-//           coordinate={{latitude: 24.8607, longitude: 67.0011}}
-//           title="Our Office"
-//         />
-//       </MapView>
-
-//       {/* Chat Button */}
-//       <Button mode="contained" style={styles.chatButton} icon="message">
-//         Live Chat
-//       </Button>
-//     </ScrollView>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {flex: 1, backgroundColor: '#fff'},
-//   headerImage: {width: '100%', height: 200, resizeMode: 'cover'},
-//   section: {padding: 20},
-//   title: {fontSize: 22, fontWeight: 'bold', color: '#333'},
-//   description: {fontSize: 16, color: '#666', marginTop: 5},
-//   card: {margin: 20, padding: 10},
-//   contactText: {fontSize: 16, marginVertical: 5},
-//   socialIcons: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-around',
-//     padding: 20,
-//   },
-//   map: {
-//     width: '90%',
-//     height: 200,
-//     alignSelf: 'center',
-//     borderRadius: 10,
-//     marginVertical: 20,
-//   },
-//   chatButton: {margin: 20, backgroundColor: '#0077B5'},
-// });
-
-// export default AboutUsScreen;
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
+import { ICONS } from '../constants/icons';
 
 const AboutUsScreen = () => {
   return (
-    <View>
-      <Text>AboutUsScreen</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor={"white"}/>
+      {/* App Logo */}
+      <View style={styles.logoContainer}>
+        <ICONS.titleIcon />
+      </View>
+
+      {/* Heading */}
+      <Text style={styles.heading}>About Us</Text>
+
+      {/* Description */}
+      <Text style={styles.description}>
+        Welcome to TripEase – your trusted travel partner. We provide tailored
+        tour plans to help you explore the beauty of Pakistan with ease, comfort,
+        and unforgettable experiences.
+      </Text>
+
+      {/* Card: Our Mission */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>🎯 Our Mission</Text>
+        <Text style={styles.cardText}>
+          To offer memorable travel experiences by delivering premium tour services
+          with transparency, safety, and professionalism.
+        </Text>
+      </View>
+
+      {/* Card: Our Services */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>🌍 Our Services</Text>
+        <Text style={styles.cardText}>
+          - Customized Travel Packages{'\n'}
+          - Group & Family Tours{'\n'}
+          - 24/7 Customer Support
+        </Text>
+      </View>
+
+      {/* Card: Our Team */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>💼 Our Team</Text>
+        <Text style={styles.cardText}>
+          A passionate team of travel experts, guides, and coordinators committed
+          to providing the best possible travel experience.
+        </Text>
+      </View>
+
+      {/* Card: Contact Info */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>📍 Contact Us</Text>
+        <Text style={styles.cardText}>
+          Email: support@tripease.pk{'\n'}
+          Phone: +92 300 1234567{'\n'}
+          Location: Lahore, Pakistan
+        </Text>
+      </View>
+
+      {/* Optional Button */}
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Contact Support</Text>
+      </TouchableOpacity>
+    </ScrollView>
   );
 };
 
 export default AboutUsScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 16,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginTop: 30,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
+  heading: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 16,
+  },
+  description: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#555',
+    marginBottom: 20,
+  },
+  card: {
+    backgroundColor: '#F2F2F2',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    elevation: 2,
+  },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: '#1E6CE0',
+  },
+  cardText: {
+    fontSize: 15,
+    color: '#333',
+    lineHeight: 22,
+  },
+  button: {
+    backgroundColor: '#0ACF83',
+    paddingVertical: 12,
+    borderRadius: 8,
+    marginVertical: 20,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});

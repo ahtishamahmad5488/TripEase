@@ -102,7 +102,7 @@ const LoginScreen = ({navigation}) => {
             </View>
             <View style={styles.loginButtonContainer}>
               <CustomButton title="Login" 
-              onPress={()=> navigation.navigate("TransporterScreen")} />
+              onPress={()=> navigation.navigate("HomeScreen")} />
             </View>
 
             <View style={styles.signupContainer}>

@@ -6,15 +6,10 @@ import AdminTab from './AdminTab';
 import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
-
-// Main App Navigator
 const MainNavigator = () => {
   const {isAuthenticated, role} = useAuth();
 
   console.log('MainNavigator auth state:', {isAuthenticated, role});
-
-  // Authentication Screens
-  // if (!isAuthenticated) {
     return (
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SplashScreen" component={SCREENS.SplashScreen} />
@@ -86,38 +81,7 @@ const MainNavigator = () => {
     );
   // }
   console.log('Navigating to stack for role:', role);
-  // Authenticated Screens
-  return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
-      {/* Customer Flow */}
-      {role === 'customer' && (
-        <>
-          <Stack.Screen name="HomeScreen" component={SCREENS.HomeScreen} />
-          <Stack.Screen name="DetailScreen" component={SCREENS.DetailScreen} />
-        </>
-      )}
 
-      {/* Transporter Flow */}
-      {role === 'transporter' && (
-        <>
-          <Stack.Screen
-            name="TransporterScreen"
-            component={SCREENS.TransporterScreen}
-          />
-        </>
-      )}
-
-      {/* Admin Flow (when role is null) */}
-      {!role && (
-        <>
-          <Stack.Screen
-            name="AdminDashBoardScreen"
-            component={SCREENS.AdminDashBoardScreen}
-          />
-        </>
-      )}
-    </Stack.Navigator>
-  );
 };
 
 export default MainNavigator;
