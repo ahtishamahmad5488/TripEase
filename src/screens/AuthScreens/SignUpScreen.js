@@ -15,7 +15,6 @@ import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextField';
 import {ICONS} from '../../constants/icons';
 import {COLORS} from '../../constants/colors';
-import { useAuth } from '../../context/AuthContext';
 
 const SignUpScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -25,19 +24,7 @@ const SignUpScreen = ({navigation}) => {
   const [contactNumber, setContactNumber] = useState('');
   const [CNIC, setCNIC] = useState('');
   const [address,setAddress] = useState(''); 
-  const { setRole } = useAuth();
   const [selectedRole, setSelectedRole] = useState('');   // 'Customer' or 'Transporter'
-
-  // Change handleSignup to NOT set authentication state
-// const handleSignup = () => {
-//   if (!selectedRole) {
-//     alert('Please select a role');
-//     return;
-//   }
-//   // Only set role, NOT authenticate
-//   setRole(selectedRole.toLowerCase()); // Ensure lowercase
-//   navigation.navigate('LoginScreen');
-// };
 
   return (
     <ImageBackground

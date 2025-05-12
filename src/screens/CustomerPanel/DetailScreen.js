@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {COLORS} from '../constants/colors';
 import * as Animatable from 'react-native-animatable';
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
+import { COLORS } from '../../constants/colors';
+
 const DetailScreen = ({route, navigation}) => {
   const tour = route.params?.tour || {};
 
@@ -21,7 +22,7 @@ const DetailScreen = ({route, navigation}) => {
         style={styles.backBtn}>
         <Image
           style={styles.arrowBack}
-          source={require('../assets/icons/backArrow.png')}
+          source={require('../../assets/icons/backArrow.png')}
         />
       </AnimatedBtn>
       <Animatable.View
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   button: {
-    backgroundColor: '#052D47',
+    backgroundColor: '#0ACF83',
     padding: 12,
     borderRadius: 5,
     marginBottom: 30,

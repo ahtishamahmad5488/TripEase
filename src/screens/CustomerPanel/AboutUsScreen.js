@@ -4,11 +4,10 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  Image,
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
-import { ICONS } from '../constants/icons';
+import { ICONS } from '../../constants/icons';
 
 const AboutUsScreen = () => {
   return (

@@ -1,11 +1,6 @@
 import SplashScreen from '../screens/SplashScreen';
-import HomeScreen from '../screens/HomeScreen';
-import BookingScreen from '../screens/BookingScreen';
-import AboutUsScreen from '../screens/AboutUsScreen';
-import MapScreen from '../screens/MapScreen';
-import DetailScreen from '../screens/DetailScreen';
-import CreateBookingScreen from '../screens/CreateBookingScreen';
-import PaymentScreen from '../screens/PaymentScreen';
+import AboutUsScreen from '../screens/CustomerPanel/AboutUsScreen';
+import MapScreen from '../screens/CustomerPanel/MapScreen';
 import TransporterScreen from '../screens/TransporterPanel/TransporterScreen';
 import RegistrationScreen from '../screens/TransporterPanel/RegistrationScreen';
 import LoginScreen from '../screens/AuthScreens/LoginScreen';
@@ -27,6 +22,11 @@ import CreatePlanScreen from '../screens/AdminPanel/CreatePlanScreen';
 import BiddingScreen from '../screens/AdminPanel/BiddingScreen';
 import ViewAllAcceptedBiddings from '../screens/AdminPanel/ViewAllAcceptedBiddings';
 import ViewAllVehicle from '../screens/AdminPanel/ViewAllVehicle';
+import HomeScreen from '../screens/CustomerPanel/HomeScreen';
+import BookingScreen from '../screens/CustomerPanel/BookingScreen';
+import DetailScreen from '../screens/CustomerPanel/DetailScreen';
+import CreateBookingScreen from '../screens/CustomerPanel/CreateBookingScreen';
+import PaymentScreen from '../screens/CustomerPanel/PaymentScreen';
 
 
 export const SCREENS = {

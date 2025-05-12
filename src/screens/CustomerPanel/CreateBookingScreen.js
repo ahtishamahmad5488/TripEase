@@ -9,10 +9,11 @@ import {
   Keyboard,
   StatusBar,
 } from 'react-native';
-import CustomButton from '../components/CustomButton';
-import {COLORS} from '../constants/colors';
-import {ICONS} from '../constants/icons';
-import CustomTextInput from '../components/CustomTextField';
+import CustomButton from '../../components/CustomButton';
+import CustomTextInput from '../../components/CustomTextField';
+import { COLORS } from '../../constants/colors';
+import { ICONS } from '../../constants/icons';
+
 
 const CreateBookingScreen = ({navigation}) => {
   const [driverName, setDriverName] = useState('');
@@ -20,7 +21,6 @@ const CreateBookingScreen = ({navigation}) => {
   const [cnic, setCnic] = useState('');
   const [licenseNo, setLicenseNo] = useState('');
   const [motorType, setMotorType] = useState('');
-  const [capacity, setCapacity] = useState('');
 
   return (
     <View style={styles.background}>

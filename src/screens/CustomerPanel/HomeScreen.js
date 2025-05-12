@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   View,
@@ -13,9 +12,9 @@ import {
   Keyboard,
   ScrollView,
 } from 'react-native';
-import { ICONS } from '../constants/icons';
-import CustomTextInput from '../components/CustomTextField';
-import { COLORS } from '../constants/colors';
+import CustomTextInput from '../../components/CustomTextField';
+import { COLORS } from '../../constants/colors';
+import { ICONS } from '../../constants/icons';
 
 const HomeScreen = ({ navigation }) => {
   const tourPlans = [
@@ -24,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Murree',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Murree.png'),
+      image: require('../../assets/icons/Murree.png'),
       tourDetails: {
         subTitle: 'Pakistan',
         info: 'A scenic hill station known for its lush green mountains, cool weather, and Mall Road, making it a popular tourist destination in Pakistan',
@@ -40,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Naran',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Naran.png'),
+      image: require('../../assets/icons/Naran.png'),
       tourDetails: {
         place: 'Naran',
         duration: '5 Days',
@@ -56,7 +55,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Kashmir',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Kashmir.png'),
+      image: require('../../assets/icons/Kashmir.png'),
       tourDetails: {
         place: 'Kashmir',
         duration: '7 Days',
@@ -72,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Swat',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Sawat.png'),
+      image: require('../../assets/icons/Sawat.png'),
       tourDetails: {
         place: 'Sawat',
         duration: '10 Days',
@@ -88,7 +87,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Swat',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Sawat.png'),
+      image: require('../../assets/icons/Sawat.png'),
       tourDetails: {
         place: 'Sawat',
         duration: '10 Days',
@@ -104,7 +103,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Swat',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Sawat.png'),
+      image: require('../../assets/icons/Sawat.png'),
       tourDetails: {
         place: 'Sawat',
         duration: '10 Days',
@@ -120,7 +119,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Swat',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Sawat.png'),
+      image: require('../../assets/icons/Sawat.png'),
       tourDetails: {
         place: 'Sawat',
         duration: '10 Days',
@@ -136,7 +135,7 @@ const HomeScreen = ({ navigation }) => {
       title: 'Lahore to Swat',
       details: 'Learn More Details',
       price: '15k',
-      image: require('../assets/icons/Sawat.png'),
+      image: require('../../assets/icons/Sawat.png'),
       tourDetails: {
         place: 'Sawat',
         duration: '10 Days',

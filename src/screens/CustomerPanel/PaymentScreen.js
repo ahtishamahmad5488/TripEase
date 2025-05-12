@@ -2,10 +2,8 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
-  Image,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
@@ -13,10 +11,10 @@ import {
   Keyboard,
   StatusBar,
 } from 'react-native';
-import {ICONS} from '../constants/icons';
-import {COLORS} from '../constants/colors';
-import CustomTextInput from '../components/CustomTextField';
-import CustomButton from '../components/CustomButton';
+import {ICONS} from '../../constants/icons';
+import {COLORS} from '../../constants/colors';
+import CustomTextInput from '../../components/CustomTextField';
+import CustomButton from '../../components/CustomButton';
 
 const PaymentScreen = ({navigation}) => {
   const [selectedMethod, setSelectedMethod] = useState(null);
@@ -93,8 +91,8 @@ const PaymentScreen = ({navigation}) => {
               }}>
               <CustomButton
                 title="Confirm Payment"
-                // onPress={() => navigation.push('TransporterScreen')}
-                onPress={() => navigation.push('AdminDashBoardScreen')}
+                onPress={() => navigation.push('TransporterScreen')}
+                // onPress={() => navigation.navigate('HomeScreen')}
               />
             </View>
           </ScrollView>

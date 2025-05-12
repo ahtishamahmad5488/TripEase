@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
   StatusBar,
 } from 'react-native';
 import {ICONS} from '../../constants/icons';

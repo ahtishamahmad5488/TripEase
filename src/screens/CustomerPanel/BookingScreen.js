@@ -5,10 +5,9 @@ import {
   StyleSheet,
   FlatList,
   SafeAreaView,
-  ScrollView,
   StatusBar,
 } from 'react-native';
-import { ICONS } from '../constants/icons';
+import { ICONS } from '../../constants/icons';
 
 const bookings = [
   {
