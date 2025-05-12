@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -15,6 +15,8 @@ import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextField';
 import {ICONS} from '../../constants/icons';
 import {COLORS} from '../../constants/colors';
+import { AuthContext } from '../../context/AuthContext';
+
 
 const SignUpScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -23,8 +25,19 @@ const SignUpScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [CNIC, setCNIC] = useState('');
-  const [address,setAddress] = useState(''); 
-  const [selectedRole, setSelectedRole] = useState('');   // 'Customer' or 'Transporter'
+  const [address, setAddress] = useState('');
+  const [selectedRole, setSelectedRole] = useState(null); // 'Customer' or 'Transporter'
+  const { setUserRole } = useContext(AuthContext);
+
+
+  const handleSignup = () => {
+    if (selectedRole) {
+      setUserRole(selectedRole); // Save role in context
+      navigation.navigate('LoginScreen'); // Go to Login screen
+    } else {
+      alert('Please select a role');
+    }
+  };
 
   return (
     <ImageBackground
@@ -34,7 +47,9 @@ const SignUpScreen = ({navigation}) => {
       <StatusBar barStyle="light-content" />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
-          <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+          <ScrollView
+            contentContainerStyle={styles.scrollContainer}
+            showsVerticalScrollIndicator={false}>
             <Text style={styles.title}>SignUp</Text>
             <View style={styles.formContainer}>
               <View style={styles.inputContainer}>
@@ -124,7 +139,8 @@ const SignUpScreen = ({navigation}) => {
                   <TouchableOpacity
                     style={[
                       styles.roleButton,
-                      selectedRole === 'transporter' && styles.roleButtonSelected,
+                      selectedRole === 'transporter' &&
+                        styles.roleButtonSelected,
                     ]}
                     onPress={() => setSelectedRole('transporter')}>
                     <Text style={styles.roleText}>transporter</Text>

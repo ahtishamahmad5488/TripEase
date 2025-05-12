@@ -12,14 +12,17 @@ const TransporterStack = () => {
       <Stack.Screen
           name="RegistrationScreen"
           component={SCREENS.RegistrationScreen}
+          options={{animation: 'slide_from_bottom'}}
         />
          <Stack.Screen
           name="ViewAvailableBiddingScreen"
           component={SCREENS.ViewAvailableBiddingsScreen}
+          options={{animation: 'slide_from_bottom'}}
         />
         <Stack.Screen
           name="AcceptedBiddingScreen"
           component={SCREENS.AcceptedBiddingsScreen}
+          options={{animation: 'slide_from_bottom'}}
         />
     </Stack.Navigator>
   );

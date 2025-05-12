@@ -1,24 +1,23 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SCREENS} from '../constants/screens';
-import AdminTab from './AdminTab';
 
 const Stack = createNativeStackNavigator();
 
 const AdminStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="AdminDashboardScreen" component={AdminTab} />
-      <Stack.Screen
+      <Stack.Screen name="AdminDashboardScreen" component={SCREENS.AdminDashBoardScreen} />
+      {/* <Stack.Screen
         name="CreatePlanScreen"
         component={SCREENS.CreatePlanScreen}
       />
-      <Stack.Screen name="CreateBidding" component={SCREENS.CreateBidding} />
-      <Stack.Screen
+      <Stack.Screen name="CreateBidding" component={SCREENS.CreateBidding} /> */}
+      {/* <Stack.Screen
         name="EditProfileScreen"
         component={SCREENS.EditProfileScreen}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="ViewAllBiddings"
         component={SCREENS.ViewAllBiddings}
       />
@@ -26,7 +25,7 @@ const AdminStack = () => {
       <Stack.Screen
         name="ViewAllBookings"
         component={SCREENS.ViewAllBookings}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };

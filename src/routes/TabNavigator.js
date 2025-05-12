@@ -10,7 +10,11 @@ const Stack = createNativeStackNavigator();
 
 const CreateStack = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="HomeScreen" component={SCREENS.HomeScreen} />
+    <Stack.Screen
+      name="HomeScreen"
+      component={SCREENS.HomeScreen}
+      options={{animation: 'slide_from_bottom'}}
+    />
     <Stack.Screen
       name="DetailScreen"
       component={SCREENS.DetailScreen}
@@ -35,7 +39,7 @@ const TabNavigator = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({focused}) => {
           let label;
-          if (route.name === 'HomeScreen') {
+          if (route.name === 'HomeStack') {
             label = 'Home';
           } else if (route.name === 'BookingScreen') {
             label = 'Booking';
@@ -62,7 +66,7 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarStyle: styles.tabBarStyle,
       })}>
-      <Tab.Screen name="HomeScreen" component={CreateStack} />
+      <Tab.Screen name="HomeStack" component={CreateStack} />
       <Tab.Screen name="BookingScreen" component={SCREENS.BookingScreen} />
       <Tab.Screen name="AboutUsScreen" component={SCREENS.AboutUsScreen} />
       <Tab.Screen name="MapScreen" component={SCREENS.MapScreen} />
@@ -79,7 +83,6 @@ const styles = StyleSheet.create({
     elevation: 0,
     shadowOpacity: 0,
   },
-
   iconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -89,12 +92,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
-    includeFontPadding: false, // Removes extra font padding
+    includeFontPadding: false,
   },
-  //   activeLabel: {
-  //     color: 'red',
-  //   },
-  //   inactiveLabel: {
-  //     color: 'gray',
-  //   },
 });

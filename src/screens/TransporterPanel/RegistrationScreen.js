@@ -113,7 +113,7 @@ const RegistrationScreen = ({navigation}) => {
             <View style={styles.loginButtonContainer}>
               <CustomButton
                 title="Register"
-                onPress={() => navigation.navigate('TransporterScreen')}
+                onPress={() => navigation.navigate('AdminDashBoardScreen')}
               />
             </View>
           </ScrollView>

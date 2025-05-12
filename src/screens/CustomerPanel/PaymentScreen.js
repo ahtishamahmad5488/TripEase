@@ -23,7 +23,6 @@ const PaymentScreen = ({navigation}) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={{flex: 1}}>
@@ -91,8 +90,7 @@ const PaymentScreen = ({navigation}) => {
               }}>
               <CustomButton
                 title="Confirm Payment"
-                onPress={() => navigation.push('TransporterScreen')}
-                // onPress={() => navigation.navigate('HomeScreen')}
+                onPress={() => navigation.pop(2)}
               />
             </View>
           </ScrollView>

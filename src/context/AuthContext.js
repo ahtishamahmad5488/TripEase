@@ -1,65 +1,34 @@
-// // context/AuthContext.js
-// import React, {createContext, useState, useContext} from 'react';
+// import React, { createContext, useState, useContext } from 'react';
 
+// // Create Context
 // const AuthContext = createContext();
 
-// export const AuthProvider = ({children}) => {
-//   const [role, setRole] = useState(null); // 'customer' | 'transporter' | 'admin'
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+// // Create Provider
+// export const AuthProvider = ({ children }) => {
+//   const [role, setRole] = useState(null); // 'customer', 'transporter', or 'admin'
 
-//   const login = (userRole) => {
-//     setRole(userRole);
-//     setIsAuthenticated(true); // ✅ THIS IS NECESSARY
+//   const value = {
+//     role,
+//     setRole,
 //   };
 
-//   const logout = () => {
-//     setRole(null);
-//     setIsAuthenticated(false);
-//   };
-
-//   return (
-//     <AuthContext.Provider value={{
-//       role,
-//       isAuthenticated,
-//       login,
-//       logout,
-//       setRole
-//     }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
+//   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 // };
 
+// // Optional Custom Hook
 // export const useAuth = () => useContext(AuthContext);
-import React, { createContext, useState, useContext } from 'react';
 
-const AuthContext = createContext();
+import React, { createContext, useState } from 'react';
+
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({
-    role: null,          // 'customer', 'transporter', or null (admin)
-    isAuthenticated: false
-  });
-
-  const login = (role) => {
-    setAuth({
-      role: role,        // Can be null for admin
-      isAuthenticated: true
-    });
-  };
-
-  const logout = () => {
-    setAuth({
-      role: null,
-      isAuthenticated: false
-    });
-  };
+  const [userRole, setUserRole] = useState(null); // 'customer', 'transporter', or null
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <AuthContext.Provider value={{ ...auth, login, logout }}>
+    <AuthContext.Provider value={{ userRole, setUserRole, isLoggedIn, setIsLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => useContext(AuthContext);

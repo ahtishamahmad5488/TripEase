@@ -1,16 +1,33 @@
-// App.js
+// // App.js
+// import React from 'react';
+// import MainNavigator from './src/routes/MainNavigator';
+// import {AuthProvider} from './src/context/AuthContext';
+// import {NavigationContainer} from '@react-navigation/native';
+
+
+// export default function App() {
+//   return (
+//     <AuthProvider>
+//       <NavigationContainer>
+//         <MainNavigator />
+//       </NavigationContainer>
+//     </AuthProvider>
+//   );
+// }
 import React from 'react';
-import MainNavigator from './src/routes/MainNavigator';
-import {AuthProvider} from './src/context/AuthContext';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from './src/routes/RootNavigator'; // we’ll create this later
+import { AuthProvider } from './src/context/AuthContext';
 
 
-export default function App() {
+const App = () => {
   return (
     <AuthProvider>
       <NavigationContainer>
-        <MainNavigator />
+        <RootNavigator />
       </NavigationContainer>
     </AuthProvider>
   );
-}
+};
+
+export default App;

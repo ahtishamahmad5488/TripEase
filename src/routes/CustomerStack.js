@@ -1,21 +1,19 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SCREENS} from '../constants/screens';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
-const CustomerStack = () => 
-   (
+const CustomerStack = () => {
+  return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="HomeScreen" component={SCREENS.HomeScreen} />
-      <Stack.Screen name="DetailScreen" component={SCREENS.DetailScreen} />
       <Stack.Screen
-        name="CreateBookingScreen"
-        component={SCREENS.CreateBookingScreen}
+        name="Tab"
+        component={TabNavigator}
+        options={{animation: 'slide_from_bottom'}}
       />
-      <Stack.Screen name="PaymentScreen" component={SCREENS.PaymentScreen} />
     </Stack.Navigator>
   );
-
-
+};
 export default CustomerStack;

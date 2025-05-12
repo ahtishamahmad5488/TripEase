@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -16,13 +16,20 @@ import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextField';
 import {COLORS} from '../../constants/colors';
 import {ICONS} from '../../constants/icons';
+import { AuthContext, useAuth } from '../../context/AuthContext';
+
 
 const LoginScreen = ({navigation}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {setIsLoggedIn} = useContext(AuthContext);
 
- 
+  const handleLogin = () => {
+    // Simulated login
+    setIsLoggedIn(true); // Update context to logged in
+  };
+
   return (
     <ImageBackground
       source={require('../../assets/icons/backgroundImage.jpg')}
@@ -78,11 +85,12 @@ const LoginScreen = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <View style={styles.loginButtonContainer}>
-              <CustomButton title="Login" 
-              onPress={()=> navigation.navigate("HomeScreen")}
-              // onPress={()=> navigation.navigate("AdminDashBoardScreen")}
-              // onPress={()=> navigation.navigate("TransporterScreen")}
-               />
+              <CustomButton
+                title="Login"
+                onPress={handleLogin}
+                // onPress={()=> navigation.navigate("AdminDashBoardScreen")}
+                // onPress={()=> navigation.navigate("TransporterScreen")}
+              />
             </View>
 
             <View style={styles.signupContainer}>
