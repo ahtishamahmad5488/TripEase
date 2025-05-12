@@ -17,6 +17,7 @@ const vehicleData = [
     cnic: '35201-1234567-1',
     licenseNo: 'LHR-12345',
     motorType: 'Truck',
+    vehicleNo:"ALP-2323",
     model: 'Hino 2020',
     capacity: '5000 kg',
   },
@@ -27,6 +28,7 @@ const vehicleData = [
     cnic: '37405-6789012-2',
     licenseNo: 'ISB-67890',
     motorType: 'Mini Loader',
+    vehicleNo:"ALP-2323",
     model: 'Suzuki Ravi 2022',
     capacity: '800 kg',
   },
@@ -37,6 +39,7 @@ const vehicleData = [
     cnic: '37405-4569012-2',
     licenseNo: 'ISB-70890',
     motorType: 'Bus',
+    vehicleNo:"ALP-2323",
     model: 'Suzuki Ravi 2020',
     capacity: '400 kg',
   },
@@ -47,6 +50,7 @@ const vehicleData = [
     cnic: '37405-1789012-2',
     licenseNo: 'ISB-17890',
     motorType: 'High Rouf',
+    vehicleNo:"ALP-2323",
     model: 'Youtang 2025',
     capacity: '1000 kg',
   },
@@ -57,6 +61,7 @@ const vehicleData = [
     cnic: '37405-6789012-1',
     licenseNo: 'IML-54884',
     motorType: 'Coster',
+    vehicleNo:"ALP-2323",
     model: 'Nova 2022',
     capacity: '800 kg',
   },
@@ -82,6 +87,10 @@ const ViewAllVehicle = () => {
       <View style={styles.row}>
         <Text style={styles.label}>Motor Type:</Text>
         <Text style={styles.value}>{item.motorType}</Text>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.label}>Vehicle Number:</Text>
+        <Text style={styles.value}>{item.vehicleNo}</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>Model:</Text>

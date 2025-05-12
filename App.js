@@ -16,7 +16,7 @@
 // }
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import RootNavigator from './src/routes/RootNavigator'; // we’ll create this later
+import RootNavigator from './src/routes/Root/RootNavigator'; // we’ll create this later
 import { AuthProvider } from './src/context/AuthContext';
 
 

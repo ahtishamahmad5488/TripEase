@@ -18,7 +18,6 @@ const CreatePlanDetailScreen = ({navigation}) => {
   const [amount, setAmount] = useState('');
   const [time,setTime] = useState('');
  
-
   return (
     <ScrollView style={styles.container}>
       <StatusBar backgroundColor="#5E3B76" barStyle="light-content" />
@@ -82,7 +81,7 @@ const CreatePlanDetailScreen = ({navigation}) => {
         </View>
       </View>
       <View style={{paddingHorizontal:20}}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AdminDashBoardScreen")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.pop(2)}>
         <Text style={styles.buttonText}>Create Plan</Text>
       </TouchableOpacity>
       </View>

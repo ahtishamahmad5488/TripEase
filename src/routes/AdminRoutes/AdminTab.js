@@ -1,8 +1,8 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet, Text, View} from 'react-native';
-import {SCREENS} from '../constants/screens';
-import {COLORS} from '../constants/colors';
+import {SCREENS} from '../../constants/screens';
+import {COLORS} from '../../constants/colors';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Tab = createBottomTabNavigator();
@@ -11,13 +11,58 @@ const Stack = createNativeStackNavigator();
 const CreateStack = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen
-      name="ViewAllPlans"
-      component={SCREENS.ViewAllPlans}
+      name="AdminDashBoardScreen"
+      component={SCREENS.AdminDashBoardScreen}
+      options={{animation: 'slide_from_bottom'}}
+    />
+  </Stack.Navigator>
+);
+
+const BiddingStack = () => (
+  <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Screen
+      name="BiddingScreen"
+      component={SCREENS.BiddingScreen}
+      options={{animation: 'slide_from_bottom'}}
+    />
+    <Stack.Screen
+      name="CreateBidding"
+      component={SCREENS.CreateBidding}
       options={{animation: 'slide_from_bottom'}}
     />
     <Stack.Screen
       name="ViewAllBiddings"
       component={SCREENS.ViewAllBiddings}
+      options={{animation: 'slide_from_bottom'}}
+    />
+    <Stack.Screen
+      name="ViewAllAcceptedBiddings"
+      component={SCREENS.ViewAllAcceptedBiddings}
+      options={{animation: 'slide_from_bottom'}}
+    />
+  </Stack.Navigator>
+);
+
+const PlanStack = () => (
+  <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Screen
+      name="PlansScreen"
+      component={SCREENS.PlansScreen}
+      options={{animation: 'slide_from_bottom'}}
+    />
+    <Stack.Screen
+      name="CreatePlanScreen"
+      component={SCREENS.CreatePlanScreen}
+      options={{animation: 'slide_from_bottom'}}
+    />
+    <Stack.Screen
+      name="CreatePlanDetailScreen"
+      component={SCREENS.CreatePlanDetailScreen}
+      options={{animation: 'slide_from_bottom'}}
+    />
+    <Stack.Screen
+      name="ViewAllPlans"
+      component={SCREENS.ViewAllPlans}
       options={{animation: 'slide_from_bottom'}}
     />
   </Stack.Navigator>
@@ -29,11 +74,11 @@ const AdminTab = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({focused}) => {
           let label;
-          if (route.name === 'AdminDashBoardScreen') {
+          if (route.name === 'HomeStack') {
             label = 'Home';
-          } else if (route.name === 'BiddingScreen') {
+          } else if (route.name === 'BiddingStack') {
             label = 'Bidding';
-          } else if (route.name === 'PlansScreen') {
+          } else if (route.name === 'PlanStack') {
             label = 'Plans';
           } else if (route.name === 'ViewAllVehicle') {
             label = 'Vehicle';
@@ -56,12 +101,9 @@ const AdminTab = () => {
         headerShown: false,
         tabBarStyle: styles.tabBarStyle,
       })}>
-      <Tab.Screen name="AdminDashBoardScreen" component={SCREENS.AdminDashBoardScreen} />
-      <Tab.Screen name="BiddingScreen" component={SCREENS.BiddingScreen} />
-      <Tab.Screen
-        name="PlansScreen"
-        component={SCREENS.PlansScreen}
-      />
+      <Tab.Screen name="HomeStack" component={CreateStack} />
+      <Tab.Screen name="BiddingStack" component={BiddingStack} />
+      <Tab.Screen name="PlanStack" component={PlanStack} />
       <Tab.Screen name="ViewAllVehicle" component={SCREENS.ViewAllVehicle} />
     </Tab.Navigator>
   );
@@ -85,12 +127,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
-    includeFontPadding: false, // Removes extra font padding
+    includeFontPadding: false,
   },
-  //   activeLabel: {
-  //     color: 'red',
-  //   },
-  //   inactiveLabel: {
-  //     color: 'gray',
-  //   },
 });

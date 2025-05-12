@@ -113,7 +113,7 @@ const RegistrationScreen = ({navigation}) => {
             <View style={styles.loginButtonContainer}>
               <CustomButton
                 title="Register"
-                onPress={() => navigation.navigate('AdminDashBoardScreen')}
+                onPress={() => navigation.goBack()}
               />
             </View>
           </ScrollView>

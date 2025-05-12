@@ -1,9 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet, Text, View} from 'react-native';
-import {SCREENS} from '../constants/screens';
-import {COLORS} from '../constants/colors';
+import {SCREENS} from '../../constants/screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { COLORS } from '../../constants/colors';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import AuthStack from './AuthStack';
-import CustomerStack from './CustomerStack';
-import TransporterStack from './TransporterStack';
-import AdminStack from './AdminStack';
-import {AuthContext} from '../context/AuthContext';
+import CustomerStack from '../CustomerRoutes/CustomerStack';
+import AdminStack from '../AdminRoutes/AdminStack';
+import {AuthContext} from '../../context/AuthContext';
+import TransporterStack from '../TransporterRoutes/TransporterStack';
+import AuthStack from '../AuthRoutes/AuthStack';
 
 const RootNavigator = () => {
   const {isLoggedIn, userRole} = useContext(AuthContext);
