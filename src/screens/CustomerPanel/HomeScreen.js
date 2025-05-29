@@ -10,13 +10,12 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
-  ScrollView,
 } from 'react-native';
 import CustomTextInput from '../../components/CustomTextField';
-import { COLORS } from '../../constants/colors';
-import { ICONS } from '../../constants/icons';
+import {COLORS} from '../../constants/colors';
+import {ICONS} from '../../constants/icons';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({navigation}) => {
   const tourPlans = [
     {
       id: 1,
@@ -149,16 +148,17 @@ const HomeScreen = ({ navigation }) => {
   ];
 
   return (
+  <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <View style={styles.container}>
         <StatusBar barStyle="light-content" />
 
-        {/* Header Part */}
+        {/* Header */}
         <View style={styles.headerContainer}>
           <ICONS.titleIcon />
         </View>
 
-        {/* Search Bar */}
+        {/* Search */}
         <View style={styles.searchContainer}>
           <ICONS.searchIcon style={styles.searchIconStyle} />
           <CustomTextInput
@@ -168,47 +168,48 @@ const HomeScreen = ({ navigation }) => {
           />
         </View>
 
-        {/* Scrollable Tour Plans Section */}
+        {/* FlatList Section */}
         <View style={styles.listDataContainer}>
           <Text style={styles.heading}>Tour Plans</Text>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <FlatList
-              data={tourPlans}
-              keyExtractor={item => item.id.toString()}
-              numColumns={2}
-              scrollEnabled={false}
-              contentContainerStyle={styles.listContainer}
-              renderItem={({ item }) => (
-                <View style={styles.cardContainer}>
-                  <View style={styles.card}>
-                    <Image source={item.image} style={styles.image} />
-                    <Text style={styles.title}>{item.title}</Text>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate('DetailScreen', { tour: item })
-                      }>
-                      <Text style={styles.details}>{item.details}</Text>
-                    </TouchableOpacity>
-                  </View>
-
-                  <View style={styles.priceButtonContainer}>
-                    <Text style={styles.price}>
-                      Price: <Text style={{ color: '#1E6CE0' }}>{item.price}</Text>
-                    </Text>
-                    <TouchableOpacity
-                      style={styles.button}
-                      onPress={() => navigation.push('CreateBookingScreen')}>
-                      <Text style={styles.buttonText}>Book Now</Text>
-                    </TouchableOpacity>
-                  </View>
+          <FlatList
+            data={tourPlans}
+            keyExtractor={item => item.id.toString()}
+            numColumns={2}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.listContainer}
+            renderItem={({item}) => (
+              <View style={styles.cardContainer}>
+                <View style={styles.card}>
+                  <Image source={item.image} style={styles.image} />
+                  <Text style={styles.title}>{item.title}</Text>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('DetailScreen', {tour: item})
+                    }>
+                    <Text style={styles.details}>{item.details}</Text>
+                  </TouchableOpacity>
                 </View>
-              )}
-            />
-          </ScrollView>
+                <View style={styles.priceButtonContainer}>
+                  <Text style={styles.price}>
+                    Price: <Text style={{color: '#1E6CE0'}}>{item.price}</Text>
+                  </Text>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={() =>
+                      navigation.push('CreateBookingScreen')
+                    }>
+                    <Text style={styles.buttonText}>Book Now</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
+          />
         </View>
-      </KeyboardAvoidingView>
+      </View>
     </TouchableWithoutFeedback>
-  );
+  </KeyboardAvoidingView>
+);
 };
 
 const styles = StyleSheet.create({
