@@ -31,52 +31,56 @@ const PaymentScreen = ({navigation}) => {
             <View style={styles.titleContainer}>
               <Text style={styles.title}>Payment</Text>
             </View>
-            <Text style={styles.subTitle}>Choose Your Payment Method</Text>
-            <View style={styles.radioContainer}>
-              <TouchableOpacity
-                onPress={() => setSelectedMethod('JazzCash')}
-                style={styles.radioButton}>
-                <View
-                  style={[
-                    styles.radioCircle,
-                    selectedMethod === 'JazzCash' && styles.selected,
-                  ]}
-                />
-                <Text style={styles.radioText}>JazzCash</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => setSelectedMethod('Easypaisa')}
-                style={styles.radioButton}>
-                <View
-                  style={[
-                    styles.radioCircle,
-                    selectedMethod === 'Easypaisa' && styles.selected,
-                  ]}
-                />
-                <Text style={styles.radioText}>Easypaisa</Text>
-              </TouchableOpacity>
-            </View>
+           
             <View
               style={{
                 paddingHorizontal: 20,
                 marginTop: 30,
               }}>
-              <Text style={styles.label}>Account Holder Name</Text>
-              <CustomTextInput
-                placeholder="Customer Name"
-                style={styles.inputTextField}
-                placeholderTextColor={COLORS.primaryLightGrayHex}
-              />
-              <Text style={styles.label}>Account Number</Text>
-              <CustomTextInput
-                placeholder="Mobile number"
-                keyboardType="numeric"
-                style={styles.inputTextField}
-                placeholderTextColor={COLORS.primaryLightGrayHex}
-              />
-              <Text style={styles.label}>Email Address</Text>
+                <Text style={styles.label}>Email Address</Text>
               <CustomTextInput
                 placeholder="Email Address"
+                keyboardType="email-address"
+                style={styles.inputTextField}
+                placeholderTextColor={COLORS.primaryLightGrayHex}
+              />
+               <Text style={styles.label}>Card Information</Text>
+              <CustomTextInput
+                placeholder="Card Information"
+                keyboardType="email-address"
+                style={styles.inputTextField}
+                placeholderTextColor={COLORS.primaryLightGrayHex}
+              />
+               
+              <View style={{flexDirection:"row",width:"50%"}}>
+                <CustomTextInput
+                placeholder="MM/YY"
+                keyboardType="email-address"
+                style={[styles.inputTextField,{marginRight:10}]}
+                placeholderTextColor={COLORS.primaryLightGrayHex}
+              />
+              <CustomTextInput
+                placeholder="CVC"
+                keyboardType="email-address"
+                style={styles.inputTextField}
+                placeholderTextColor={COLORS.primaryLightGrayHex}
+              />
+              </View>
+              <Text style={styles.label}>CardHolder Name</Text>
+              <CustomTextInput
+                placeholder="Full Name on Card"
+                style={styles.inputTextField}
+                placeholderTextColor={COLORS.primaryLightGrayHex}
+              />
+              <Text style={styles.label}>Country or Region</Text>
+              <CustomTextInput
+                placeholder="United State"
+                keyboardType="email-address"
+                style={styles.inputTextField}
+                placeholderTextColor={COLORS.primaryLightGrayHex}
+              />
+              <CustomTextInput
+                placeholder="ZIP"
                 keyboardType="email-address"
                 style={styles.inputTextField}
                 placeholderTextColor={COLORS.primaryLightGrayHex}
@@ -118,13 +122,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 30,
     textAlign: 'center',
-  },
-  subTitle: {
-    fontSize: 24,
-    marginBottom: 10,
-    textAlign: 'center',
-    marginTop: 30,
-    fontWeight: '600',
   },
   radioContainer: {
     flexDirection: 'row',
